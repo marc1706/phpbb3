@@ -42,6 +42,11 @@ class phpbb_extension_modules_test extends phpbb_test_case
 
 	public function test_get_module_infos()
 	{
+		global $phpbb_root_path;
+
+		// Correctly set the root path for this test to this directory, so the classes can be found
+		$phpbb_root_path = dirname(__FILE__) . '/';
+
 		$this->acp_modules->module_class = 'acp';
 		$acp_modules = $this->acp_modules->get_module_infos();
 		$this->assertEquals(array(
@@ -51,6 +56,14 @@ class phpbb_extension_modules_test extends phpbb_test_case
 					'version'	=> '3.1.0-dev',
 					'modes'		=> array(
 						'config'		=> array('title' => 'Config',	'auth' => '', 'cat' => array('ACP_MODS')),
+					),
+				),
+				'acp_foobar' => array(
+					'filename'	=> 'acp_foobar',
+					'title'		=> 'ACP Foobar',
+					'version'	=> '3.1.0-dev',
+					'modes'		=> array(
+						'test'		=> array('title' => 'Test', 'auth' => '', 'cat' => array('ACP_GENERAL')),
 					),
 				),
 			), $acp_modules);
