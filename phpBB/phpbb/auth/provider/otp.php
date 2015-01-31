@@ -26,6 +26,9 @@ class otp extends base
 	/** @var \phpbb\db\driver\driver_interface */
 	protected $db;
 
+	/** @var \OTPAuthenticate\OTPAuthenticate */
+	protected $otp_authenticate;
+
 	/** @var \phpbb\user */
 	protected $user;
 
@@ -34,13 +37,17 @@ class otp extends base
 	 *
 	 * @param \phpbb\config\config $config
 	 * @param \phpbb\db\driver\driver_interface $db
+	 * @param \OTPAuthenticate\OTPAuthenticate $otp_authenticate OTP Authentication class
 	 * @param \phpbb\user $user
 	 * @param string $table_otp_session
 	 * @param string $table_otp_tokens
 	 */
-	public function __construct($config, $db, $user, $table_otp_session, $table_otp_tokens)
+	public function __construct($config, $db, OTPAuthenticate $otp_authenticate, $user, $table_otp_session, $table_otp_tokens)
 	{
-		$this->otp_authenticate = new OTPAuthenticate();
+		$this->config = $config;
+		$this->db = $db;
+		$this->otp_authenticate = $otp_authenticate;
+		$this->user = $user;
 	}
 
 	/**

@@ -72,6 +72,7 @@ services:
         arguments:
             - @config
             - @dbal.conn
+            - @auth.provider.otp.authenticate
             - @user
             - %tables.auth_provider_otp_sessions%
             - %tables.auth_provider_otp_tokens%
@@ -109,3 +110,7 @@ services:
             - @request
         tags:
             - { name: auth.provider.oauth.service }
+
+# ----- OTP authentication class -----
+    auth.provider.otp.authenticate:
+        class: OTPAuthenticate\OTPAuthenticate
