@@ -1,4 +1,6 @@
 parameters:
+    tables.auth_provider_otp_sessions: %core.table_prefix%otp_sessions
+    tables.auth_provider_otp_tokens: %core.table_prefix%otp_tokens
     tables.auth_provider_oauth_token_storage: %core.table_prefix%oauth_tokens
     tables.auth_provider_oauth_account_assoc: %core.table_prefix%oauth_accounts
     tables.captcha_qa_questions: %core.table_prefix%captcha_questions

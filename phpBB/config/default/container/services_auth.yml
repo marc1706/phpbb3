@@ -67,6 +67,17 @@ services:
         tags:
             - { name: auth.provider }
 
+    auth.provider.otp:
+        class: phpbb\auth\provider\otp
+        arguments:
+            - @config
+            - @dbal.conn
+            - @user
+            - %tables.auth_provider_otp_sessions%
+            - %tables.auth_provider_otp_tokens%
+        tags:
+            - { name: auth.provider }
+
 # ----- OAuth services providers -----
     auth.provider.oauth.service_collection:
         class: phpbb\di\service_collection
