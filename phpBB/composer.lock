@@ -125,16 +125,16 @@
         },
         {
             "name": "marc1706/otp-authenticate",
-            "version": "1.0.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/marc1706/otp-authenticate.git",
-                "reference": "12f5db4e0e4e4a46b9e9d54af54d625873d11cea"
+                "reference": "8275e9d7b079ed03fb56ee8382f4d8c2aecdfa83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/marc1706/otp-authenticate/zipball/12f5db4e0e4e4a46b9e9d54af54d625873d11cea",
-                "reference": "12f5db4e0e4e4a46b9e9d54af54d625873d11cea",
+                "url": "https://api.github.com/repos/marc1706/otp-authenticate/zipball/8275e9d7b079ed03fb56ee8382f4d8c2aecdfa83",
+                "reference": "8275e9d7b079ed03fb56ee8382f4d8c2aecdfa83",
                 "shasum": ""
             },
             "require": {
@@ -146,7 +146,7 @@
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
+                "psr-4": {
                     "OTPAuthenticate\\": "/lib",
                     "OTPAuthenticate\\tests\\": "/tests"
                 }
@@ -163,17 +163,18 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Provides a simple and up-to-date library for two-factor authentication using TOTP hashes and Google Authenticator or a similar app.",
+            "description": "Provides a simple and up-to-date library for two-factor authentication using OTP hashes and Google Authenticator or a similar app.",
             "homepage": "https://www.m-a-styles.de",
             "keywords": [
                 "Authentication",
                 "authenticator",
                 "google",
+                "hotp",
                 "otp",
                 "totp",
                 "two-factor"
             ],
-            "time": "2015-01-20 14:04:58"
+            "time": "2015-01-31 16:43:18"
         },
         {
             "name": "patchwork/utf8",
