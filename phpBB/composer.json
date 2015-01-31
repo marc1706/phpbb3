@@ -38,7 +38,8 @@
 		"symfony/security-csrf": "2.7.*@dev",
 		"symfony/twig-bridge": "2.7.*@dev",
 		"symfony/yaml": "2.7.*@dev",
-		"twig/twig": "1.*"
+		"twig/twig": "1.*",
+		"marc1706/otp-authenticate": "1.0.*"
 	},
 	"require-dev": {
 		"fabpot/goutte": "1.0.*",
