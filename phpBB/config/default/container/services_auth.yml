@@ -73,6 +73,8 @@ services:
             - @config
             - @dbal.conn
             - @auth.provider.otp.authenticate
+            - @passwords.manager
+            - @request
             - @user
             - %tables.auth_provider_otp_sessions%
             - %tables.auth_provider_otp_tokens%
