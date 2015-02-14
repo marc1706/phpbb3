@@ -43,4 +43,18 @@ class otp_authenticate extends \phpbb\db\migration\migration
 			),
 		);
 	}
+
+	public function update_data()
+	{
+		return array(
+			array('module.add', array(
+				'ucp',
+				'UCP_PROFILE',
+				array(
+					'module_basename'	=> 'ucp_auth_otp',
+					'modes'				=> array('auth_otp'),
+				),
+			)),
+		);
+	}
 }

@@ -85,4 +85,21 @@ class otp extends db
 
 		return false;
 	}
+
+	/**
+	 * Get user's OTP data from database
+	 *
+	 * @return array User's OTP data
+	 */
+	public function get_user_otp_data()
+	{
+		$sql = 'SELECT user_otp_secret, user_otp_counter
+			FROM ' . USERS_TABLE . '
+			WHERE user_id = ' . (int) $this->user->data['id'];
+		$result = $this->db->sql_query($sql);
+		$row = $this->db->sql_fetchrowset($result);
+		$this->db->sql_freeresult($result);
+
+		return $row;
+	}
 }

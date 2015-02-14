@@ -1,0 +1,23 @@
+<!-- INCLUDE ucp_header.html -->
+
+<h2>{L_UCP_AUTH_OTP_TITLE}</h2>
+
+<div class="panel">
+	<div class="inner">
+		<!-- IF ERROR --><dl><dd class="error">{ERROR}</dd></dl><!-- ENDIF -->
+
+		<p>{L_UCP_AUTH_OTP_SETTINGS}</p>
+		<!-- IF OTP_TYPE -->
+		<fieldset>
+			<dl>
+				<dt><label>{L_UCP_AUTH_OTP_TYPE}{L_COLON}</label></dt>
+				<dd>{OTP_TYPE}</dd>
+			</dl>
+		</fieldset>
+		<!-- ELSE -->
+		<p>{L_UCP_AUTH_OTP_NOT_EXIST}</p>
+		<!-- ENDIF -->E
+	</div>
+</div>
+
+<!-- INCLUDE ucp_footer.html -->
