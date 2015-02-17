@@ -108,4 +108,19 @@ class otp extends db
 
 		return $row;
 	}
+
+	public function link_account(array $link_data)
+	{
+		$link_data['user_otp_secret'] = $this->otp_authenticate->generateSecret();
+
+		$sql = 'UPDATE ' . USERS_TABLE . '
+			SET ' . $this->db->sql_build_array('UPDATE', $link_data) . '
+			WHERE user_id = ' . $link_data['user_id'];
+		$result = $this->db->sql_query($sql);
+
+		if (!$result)
+		{
+			return 'UCP_AUTH_OTP_INVALID';
+		}
+	}
 }

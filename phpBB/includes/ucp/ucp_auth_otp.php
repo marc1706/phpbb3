@@ -64,16 +64,10 @@ class ucp_auth_otp
 
 			if (!sizeof($error))
 			{
-				// Any post data could be necessary for auth (un)linking
-				$link_data = $request->get_super_global(\phpbb\request\request_interface::POST);
-
 				// The current user_id is also necessary
 				$link_data['user_id'] = $user->data['user_id'];
 
-				// Tell the provider that the method is auth_link not login_link
-				$link_data['link_method'] = 'auth_link';
-
-				if ($request->variable('link', 0, false, \phpbb\request\request_interface::POST))
+				if ($request->variable('otp_create_secret', 0, false, \phpbb\request\request_interface::POST))
 				{
 					$error[] = $auth_provider->link_account($link_data);
 				}

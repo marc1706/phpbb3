@@ -16,6 +16,16 @@
 		</fieldset>
 		<!-- ELSE -->
 		<p>{L_UCP_AUTH_OTP_NOT_EXIST}</p>
+		<form id="ucp" method="post" action="{S_UCP_ACTION}">
+			<fieldset>
+				<dl>
+					<dt>&nbsp;</dt>
+					<dd><input type="submit" name="otp_create_secret" tabindex="6" value="{L_UCP_AUTH_OTP_CREATE}" class="button1" /></dd>
+				</dl>
+			</fieldset>
+			{S_HIDDEN_FIELDS}
+			{S_FORM_TOKEN}
+		</form>
 		<!-- ENDIF -->
 	</div>
 </div>
