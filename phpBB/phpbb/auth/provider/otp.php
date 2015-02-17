@@ -38,6 +38,12 @@ class otp extends db
 	/** @var \phpbb\user */
 	protected $user;
 
+	/** @var int TOTP authentication type */
+	const OTP_TYPE_TOTP = 1;
+
+	/** @var int HOTP authentication type */
+	const OTP_TYPE_HOTP = 2;
+
 	/**
 	 * Constructor for OTP authentication provider
 	 *
@@ -95,7 +101,7 @@ class otp extends db
 	{
 		$sql = 'SELECT user_otp_secret, user_otp_counter
 			FROM ' . USERS_TABLE . '
-			WHERE user_id = ' . (int) $this->user->data['id'];
+			WHERE user_id = ' . (int) $this->user->data['user_id'];
 		$result = $this->db->sql_query($sql);
 		$row = $this->db->sql_fetchrowset($result);
 		$this->db->sql_freeresult($result);

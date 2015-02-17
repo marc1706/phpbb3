@@ -87,9 +87,7 @@ class ucp_auth_otp
 			}
 		}
 
-		var_dump($otp_data);
-
-		if (!empty($otp_data))
+		if (!empty($otp_data) && !empty($otp_data['secret']))
 		{
 			$template->assign_vars(array(
 				'OTP_TYPE'		=> $user->lang($otp_data['user_otp_counter'] > 0 ? 'UCP_AUTH_OTP_HOTP' : 'UCP_AUTH_OTP_TOTP'),
