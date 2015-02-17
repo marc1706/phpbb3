@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2038bc8bd0fea66b22774ca7bca11a79",
+    "hash": "17578b17a3d36872569a2167b1e47b61",
     "packages": [
         {
             "name": "christian-riesen/base32",
@@ -2633,9 +2633,7 @@
             "time": "2015-01-25 04:39:35"
         }
     ],
-    "aliases": [
-
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "symfony/config": 20,
@@ -2661,7 +2659,5 @@
     "platform": {
         "php": ">=5.3.9"
     },
-    "platform-dev": [
-
-    ]
+    "platform-dev": []
 }
