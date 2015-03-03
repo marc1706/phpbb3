@@ -97,13 +97,15 @@ class otp extends db
 	 *
 	 * @return array User's OTP data
 	 */
-	public function get_user_otp_data()
+	public function get_user_otp_data($user_id = false)
 	{
+		$user_id = (!$user_id) ? $this->user->data['user_id'] : $user_id;
+
 		$sql = 'SELECT user_otp_secret, user_otp_counter
 			FROM ' . USERS_TABLE . '
-			WHERE user_id = ' . (int) $this->user->data['user_id'];
+			WHERE user_id = ' . (int) $user_id;
 		$result = $this->db->sql_query($sql);
-		$row = $this->db->sql_fetchrowset($result);
+		$row = $this->db->sql_fetchrow($result);
 		$this->db->sql_freeresult($result);
 
 		return $row;
@@ -111,10 +113,8 @@ class otp extends db
 
 	public function link_account(array $link_data)
 	{
-		$link_data['user_otp_secret'] = $this->otp_authenticate->generateSecret();
-
 		$sql = 'UPDATE ' . USERS_TABLE . '
-			SET ' . $this->db->sql_build_array('UPDATE', $link_data) . '
+			SET ' . $this->db->sql_build_array('UPDATE', array('user_otp_secret' => $this->otp_authenticate->generateSecret())) . '
 			WHERE user_id = ' . $link_data['user_id'];
 		$result = $this->db->sql_query($sql);
 

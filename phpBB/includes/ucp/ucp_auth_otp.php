@@ -52,7 +52,7 @@ class ucp_auth_otp
 		$s_hidden_fields = array();
 		add_form_key('ucp_auth_otp');
 
-		$submit	= $request->variable('submit', false, false, \phpbb\request\request_interface::POST);
+		$submit	= $request->variable('otp_create_secret', false, false, \phpbb\request\request_interface::POST);
 
 		// This path is only for primary actions
 		if (!sizeof($error) && $submit)
@@ -67,9 +67,24 @@ class ucp_auth_otp
 				// The current user_id is also necessary
 				$link_data['user_id'] = $user->data['user_id'];
 
-				if ($request->variable('otp_create_secret', 0, false, \phpbb\request\request_interface::POST))
+				if ($request->variable('otp_create_secret', false, false, \phpbb\request\request_interface::POST))
 				{
-					$error[] = $auth_provider->link_account($link_data);
+					$link_status = $auth_provider->link_account($link_data);
+
+					if ($link_status !== null)
+					{
+						$error[] = $link_status;
+					}
+
+					if (!sizeof($error))
+					{
+						$otp_data = $auth_provider->get_user_otp_data();
+
+						$template->assign_vars(array(
+							'OTP_SECRET_CREATE'		=> true,
+							'OTP_SECRET'			=> $otp_data['user_otp_secret'],
+						));
+					}
 				}
 				else
 				{
@@ -81,7 +96,7 @@ class ucp_auth_otp
 			}
 		}
 
-		if (!empty($otp_data) && !empty($otp_data['secret']))
+		if (!empty($otp_data) && !empty($otp_data['user_otp_secret']))
 		{
 			$template->assign_vars(array(
 				'OTP_TYPE'		=> $user->lang($otp_data['user_otp_counter'] > 0 ? 'UCP_AUTH_OTP_HOTP' : 'UCP_AUTH_OTP_TOTP'),

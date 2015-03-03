@@ -14,6 +14,13 @@
 				<dd>{OTP_TYPE}</dd>
 			</dl>
 		</fieldset>
+		<!-- ELSEIF OTP_SECRET_CREATE -->
+		<fieldset>
+			<dl>
+				<dt><label>{L_UCP_AUTH_OTP_SECRET}{L_COLON}</label></dt>
+				<dd>This is your OPT secret. Please save this with your OTP app like Google Authenticator: {OTP_SECRET}</dd>
+			</dl>
+		</fieldset>
 		<!-- ELSE -->
 		<p>{L_UCP_AUTH_OTP_NOT_EXIST}</p>
 		<form id="ucp" method="post" action="{S_UCP_ACTION}">
