@@ -63,6 +63,9 @@ class plupload
 	/** @var array Allowed attachment extensions */
 	protected $attach_extensions;
 
+	/** @var array Attachment dimensions */
+	protected $attach_dimensions;
+
 	/**
 	* Constructor.
 	*
@@ -83,6 +86,7 @@ class plupload
 		$this->mimetype_guesser = $mimetype_guesser;
 
 		$this->set_default_directories();
+		$this->set_default_dimensions($this->config['img_max_width'], $this->config['img_max_height']);
 	}
 
 	/**
@@ -271,13 +275,14 @@ class plupload
 	public function generate_resize_string()
 	{
 		$resize = '';
-		if ($this->config['img_max_height'] > 0 && $this->config['img_max_width'] > 0)
+		if ($this->attach_dimensions['width'] > 0 && $this->attach_dimensions['height'] > 0)
 		{
 			$resize = sprintf(
 				'resize: {width: %d, height: %d, quality: 100},',
-				(int) $this->config['img_max_width'],
-				(int) $this->config['img_max_height']
+				(int) $this->attach_dimensions['width'],
+				(int) $this->attach_dimensions['height']
 			);
+			$this->set_default_dimensions($this->config['img_max_width'], $this->config['img_max_height']);
 		}
 
 		return $resize;
@@ -417,5 +422,20 @@ class plupload
 	public function set_attach_extensions($extensions = array())
 	{
 		$this->attach_extensions = $extensions;
+	}
+
+	/**
+	 * Set default attachment dimensions. Dimensions will get reset to max
+	 * image dimensions set in config after configure() has been run.
+	 *
+	 * @param int $width Attachment width
+	 * @param int $height Attachment height
+	 */
+	public function set_default_dimensions($width = 0, $height = 0)
+	{
+		$this->attach_dimensions = array(
+			'width'		=> $width,
+			'height'	=> $height,
+		);
 	}
 }
