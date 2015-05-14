@@ -66,6 +66,9 @@ class plupload
 	/** @var array Attachment dimensions */
 	protected $attach_dimensions;
 
+	/** @var int Maximum attachment size */
+	protected $max_attachment_size;
+
 	/**
 	* Constructor.
 	*
@@ -87,6 +90,7 @@ class plupload
 
 		$this->set_default_directories();
 		$this->set_default_dimensions($this->config['img_max_width'], $this->config['img_max_height']);
+		$this->set_max_attach_size($this->config['max_filesize']);
 	}
 
 	/**
@@ -300,8 +304,9 @@ class plupload
 			$this->php_ini->get_bytes('upload_max_filesize'),
 			$this->php_ini->get_bytes('post_max_size'),
 			max(1, $this->php_ini->get_bytes('memory_limit')),
-			$this->config['max_filesize']
+			$this->max_attachment_size
 		);
+		$this->set_max_attach_size($this->config['max_filesize']);
 
 		// Use half of the maximum possible to leave plenty of room for other
 		// POST data.
@@ -437,5 +442,16 @@ class plupload
 			'width'		=> $width,
 			'height'	=> $height,
 		);
+	}
+
+	/**
+	 * Set maximum attachment size. Size will be reset to default maximum
+	 * filesize set in config.
+	 *
+	 * @param int $size Maximum attachment size
+	 */
+	public function set_max_attach_size($size)
+	{
+		$this->max_attachment_size = $size;
 	}
 }
