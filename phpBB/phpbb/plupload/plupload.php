@@ -60,6 +60,9 @@ class plupload
 	*/
 	protected $temporary_directory;
 
+	/** @var array Allowed attachment extensions */
+	protected $attach_extensions;
+
 	/**
 	* Constructor.
 	*
@@ -226,12 +229,16 @@ class plupload
 	*/
 	public function generate_filter_string(\phpbb\cache\service $cache, $forum_id)
 	{
-		$attach_extensions = $cache->obtain_attach_extensions($forum_id);
-		unset($attach_extensions['_allowed_']);
+		if (empty($this->attach_extensions))
+		{
+			$this->attach_extensions = $cache->obtain_attach_extensions($forum_id);
+			unset($this->attach_extensions['_allowed_']);
+		}
+
 		$groups = array();
 
 		// Re-arrange the extension array to $groups[$group_name][]
-		foreach ($attach_extensions as $extension => $extension_info)
+		foreach ($this->attach_extensions as $extension => $extension_info)
 		{
 			if (!isset($groups[$extension_info['group_name']]))
 			{
@@ -240,6 +247,7 @@ class plupload
 
 			$groups[$extension_info['group_name']][] = $extension;
 		}
+		unset($this->attach_extensions);
 
 		$filters = array();
 		foreach ($groups as $group => $extensions)
@@ -398,5 +406,16 @@ class plupload
 	{
 		$this->upload_directory = $upload_directory;
 		$this->temporary_directory = $temporary_directory;
+	}
+
+	/**
+	 * Set allowed attachment extensions. The array will be unset every time
+	 * plupload gets configured.
+	 *
+	 * @param array $extensions Attachment extensions
+	 */
+	public function set_attach_extensions($extensions = array())
+	{
+		$this->attach_extensions = $extensions;
 	}
 }
