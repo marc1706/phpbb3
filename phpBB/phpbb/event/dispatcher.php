@@ -50,6 +50,32 @@ class dispatcher extends ContainerAwareEventDispatcher implements dispatcher_int
 	/**
 	 * {@inheritdoc}
 	 */
+	public function trigger_event2($eventName, $data = array(),
+								   &$arg1 = null, &$arg2 = null, &$arg3 = null, &$arg4 = null, &$arg5 = null, &$arg6 = null,
+								   &$arg7 = null, &$arg8 = null, &$arg9 = null, &$arg10 = null, &$arg11 = null, &$arg12 = null,
+								   &$arg13 = null, &$arg14 = null, &$arg15 = null, &$arg16 = null, &$arg17 = null, &$arg18 = null,
+								   &$arg19 = null, &$arg20 = null, &$arg21 = null, &$arg22 = null, &$arg23 = null, &$arg24 = null,
+								   &$arg25 = null, &$arg26 = null, &$arg27 = null, &$arg28 = null, &$arg29 = null, &$arg30 = null)
+	{
+		$event = new \phpbb\event\data($data);
+		$this->dispatch($eventName, $event);
+		$data = $event->get_data_filtered(array_keys($data));
+		$num_args = func_num_args();
+		if ($num_args > 32 || ($num_args - 2) !== sizeof($data))
+		{
+			trigger_error('incorrect_data');
+		}
+		for ($i = 1; $i < ($num_args - 1); $i++)
+		{
+			$arg{$i} = array_shift($data);
+		}
+
+		//return $event->get_data_filtered(array_keys($data));
+	}
+
+	/**
+	 * {@inheritdoc}
+	 */
 	public function dispatch($eventName, Event $event = null)
 	{
 		if ($this->disabled)

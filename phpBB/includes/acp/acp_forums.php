@@ -960,7 +960,10 @@ class acp_forums
 		* @since 3.1.0-a1
 		*/
 		$vars = array('forum_data', 'errors');
-		extract($phpbb_dispatcher->trigger_event('core.acp_manage_forums_validate_data', compact($vars)));
+		//extract($phpbb_dispatcher->trigger_event('core.acp_manage_forums_validate_data', compact($vars)));
+		$phpbb_dispatcher->trigger_event2('core.acp_manage_forums_validate_data', compact($vars),
+			$forum_data,
+			$errors);
 
 		if ($forum_data['forum_name'] == '')
 		{
@@ -1069,7 +1072,8 @@ class acp_forums
 		* @since 3.1.0-a1
 		*/
 		$vars = array('forum_data', 'forum_data_sql');
-		extract($phpbb_dispatcher->trigger_event('core.acp_manage_forums_update_data_before', compact($vars)));
+		//extract($phpbb_dispatcher->trigger_event('core.acp_manage_forums_update_data_before', compact($vars)));
+		$phpbb_dispatcher->trigger_event2('core.acp_manage_forums_update_data_before', compact($vars), $forum_data, $forum_data_sql);
 
 		$is_new_forum = !isset($forum_data_sql['forum_id']);
 
@@ -1362,7 +1366,13 @@ class acp_forums
 		* @since 3.1.0-a1
 		*/
 		$vars = array('forum_data', 'forum_data_sql', 'is_new_forum', 'errors');
-		extract($phpbb_dispatcher->trigger_event('core.acp_manage_forums_update_data_after', compact($vars)));
+		//extract($phpbb_dispatcher->trigger_event('core.acp_manage_forums_update_data_after', compact($vars)));
+		$phpbb_dispatcher->trigger_event2('core.acp_manage_forums_update_data_after', compact($vars),
+			$forum_data,
+			$forum_data_sql,
+			$is_new_forum,
+			$errors
+		);
 
 		return $errors;
 	}
