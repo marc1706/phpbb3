@@ -76,7 +76,7 @@ abstract class abstract_requirements_module extends module_base
 		}
 
 		// Module finished, so clear task progress
-		$this->install_config->set_finished_task('');
+		$this->install_config->set_finished_task(0);
 
 		// Check if tests have failed
 		if (!$tests_passed)
@@ -91,7 +91,6 @@ abstract class abstract_requirements_module extends module_base
 			));
 
 			// Send the response and quit
-			$this->iohandler->send_response();
 			throw new user_interaction_required_exception();
 		}
 	}
