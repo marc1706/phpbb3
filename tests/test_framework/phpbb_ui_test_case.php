@@ -194,11 +194,7 @@ class phpbb_ui_test_case extends phpbb_test_case
 		$iohandler->set_input('script_path', $parseURL['path']);
 		$iohandler->set_input('submit_server', 'submit');
 
-		do
-		{
-			$installer->run();
-		}
-		while (file_exists($phpbb_root_path . 'store/install_config.php'));
+		$installer->run();
 
 		copy($config_file, $config_file_test);
 
