@@ -232,7 +232,6 @@ class add_bots extends \phpbb\install\task_base
 			// Run until there are available resources
 			if ($this->install_config->get_time_remaining() <= 0 || $this->install_config->get_memory_remaining() <= 0)
 			{
-				die("This should not happen on cli");
 				break;
 			}
 		}
