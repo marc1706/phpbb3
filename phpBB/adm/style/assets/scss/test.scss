@@ -1,0 +1,5 @@
+.test {
+  $width: percentage(5/7);
+  width: $width;
+  height: $width / 2;
+}
