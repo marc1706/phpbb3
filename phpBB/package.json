@@ -28,8 +28,12 @@
   },
   "homepage": "https://github.com/phpbb/phpbb#readme",
   "devDependencies": {
+    "autoprefixer": "^6.3.3",
     "del": "^2.2.0",
     "gulp": "^3.9.1",
-    "gulp-sass": "^2.2.0"
+    "gulp-postcss": "^6.1.0",
+    "gulp-sass": "^2.2.0",
+    "path": "^0.12.7",
+    "postcss-url": "^5.1.1"
   }
 }

@@ -1,0 +1,57 @@
+/*  phpBB 3.3 Admin Style Sheet
+	------------------------------------------------------------------------
+	Copyright (c) phpBB Limited <https://www.phpbb.com>
+
+	For full copyright and license information, please see
+	the docs/CREDITS.txt file.
+	------------------------------------------------------------------------
+*/
+
+$logo-small-height: 4.8rem;
+$logo-small-image-ratio: 2.7;
+$logo-small-responsive-factor: 0.7;
+$logo-small-responsive-height: $logo-small-height * $logo-small-responsive-factor;
+
+.phpbb-logo-small {
+	background: url('../../assets/images/logo_small_blue.svg') no-repeat;
+	display: inline-block;
+	height: $logo-small-height;
+	width: $logo-small-height * $logo-small-image-ratio;
+}
+
+.navbar-brand {
+	padding: 1rem;
+}
+
+.navbar-nav > li > a {
+	line-height: 40px;
+	height: 70px;
+}
+
+.navbar-form {
+	padding-top: 1rem;
+}
+
+/* Responsive settings
+--------------------------------------------- */
+
+@media (max-width: 767px) {
+	.phpbb-logo-small {
+		height: $logo-small-responsive-height;
+		width: $logo-small-responsive-height * $logo-small-image-ratio;
+	}
+
+	.navbar-brand {
+		padding: $logo-small-responsive-factor * 1rem;
+	}
+}
+
+@media (min-width: 768px) {
+	body {
+		padding-top: 70px !important;
+	}
+
+	.sidebar {
+		top: 71px !important;
+	}
+}
