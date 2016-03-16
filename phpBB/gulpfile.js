@@ -2,6 +2,7 @@
 
 var del = require('del'),
 	gulp = require('gulp'),
+	svgSprite = require('gulp-svg-sprite'),
 	sass = require('gulp-sass'),
 	postcss = require('gulp-postcss'),
 	path = require('path');
@@ -30,6 +31,55 @@ gulp.task('adm_compile_sass', ['clean_adm', 'copy_adm_js', 'copy_adm_fonts'], fu
 		}).on("error", sass.logError))
 		.pipe(postcss(processors))
 		.pipe(gulp.dest(admConfig.cssPath));
+});
+
+gulp.task('create_adm_icons', ['create_svg_sprite'], function () {
+	return del([admConfig.imagesPath + '/svg/white']);
+});
+
+gulp.task('create_svg', function (cb) {
+	var exec = require('child_process').exec;
+
+	del([admConfig.imagesPath + '/svg/white']);
+	// Create svgs
+	exec('font-awesome-svg-png --color white --no-png --sizes 128 --dest ' + admConfig.imagesPath + '/svg', function (err, stdout, stderr) {
+		console.log(stdout);
+		console.log(stderr);
+		cb(err);
+	});
+});
+
+gulp.task('create_svg_sprite', ['create_svg'], function () {
+	return gulp.src(admConfig.imagesPath + '/svg/white/svg/*')
+		.pipe(svgSprite({
+			shape: {
+				dimension: {
+					maxWidth: 48,
+					maxHeight: 48
+				},
+				spacing: {
+					padding: 5
+				}
+			},
+			mode: {
+				css: {
+					dest: admConfig.imagesPath + '/svg',
+					layout: 'grid',
+					sprite: 'sprite.svg',
+					bust: false,
+					render: {
+						scss: {
+							dest: '../../../../../' + admConfig.sassPath + '/_sprite.scss',
+							template: admConfig.sassPath + '/_sprite_template'
+						}
+					}
+				}
+			},
+			variables: {
+				mapname: 'icons'
+			}
+		}))
+		.pipe(gulp.dest('./'));
 });
 
 gulp.task('copy_adm_js', function() {

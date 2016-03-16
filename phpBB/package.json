@@ -30,9 +30,14 @@
   "devDependencies": {
     "autoprefixer": "^6.3.3",
     "del": "^2.2.0",
+    "font-awesome": "^4.5.0",
+    "font-awesome-svg-png": "^1.1.5",
     "gulp": "^3.9.1",
+    "gulp-exec": "^2.1.2",
     "gulp-postcss": "^6.1.0",
     "gulp-sass": "^2.2.0",
+    "gulp-svg-sprite": "^1.2.19",
+    "gulp-svgstore": "^6.0.0",
     "path": "^0.12.7",
     "postcss-url": "^5.1.1"
   }
