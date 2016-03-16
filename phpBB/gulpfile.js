@@ -2,9 +2,12 @@
 
 var del = require('del'),
 	gulp = require('gulp'),
+	gulpRename = require('gulp-rename'),
 	svgSprite = require('gulp-svg-sprite'),
+	svgMin = require('gulp-svgmin'),
 	sass = require('gulp-sass'),
 	postcss = require('gulp-postcss'),
+	cleanCss = require('gulp-clean-css'),
 	path = require('path');
 
 var admConfig = {
@@ -30,10 +33,11 @@ gulp.task('adm_compile_sass', ['clean_adm', 'copy_adm_js', 'copy_adm_fonts'], fu
 			]
 		}).on("error", sass.logError))
 		.pipe(postcss(processors))
+		.pipe(cleanCss({compatibility: 'ie8'}))
 		.pipe(gulp.dest(admConfig.cssPath));
 });
 
-gulp.task('create_adm_icons', ['create_svg_sprite'], function () {
+gulp.task('create_adm_icons', ['create_svg_sprite', 'svg_minify'], function () {
 	return del([admConfig.imagesPath + '/svg/white']);
 });
 
@@ -99,4 +103,15 @@ gulp.task('watch_adm', function() {
 gulp.task('clean_adm', function () {
 	del(['adm/style/assets/css/*']);
 	del(['adm/style/assets/js/*']);
+});
+
+gulp.task('svg_minify', function () {
+	return gulp.src(admConfig.imagesPath + '/svg/sprite.svg')
+		.pipe(svgMin({
+			plugins: [{
+				mergePaths: true
+			}]
+		}))
+		.pipe(gulpRename('sprite.min.svg'))
+		.pipe(gulp.dest(admConfig.imagesPath + '/svg'));
 });
