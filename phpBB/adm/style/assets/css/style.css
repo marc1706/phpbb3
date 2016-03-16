@@ -5848,7 +5848,15 @@ button.close {
   .navbar-top-menu li:hover > a:after {
     border-bottom: solid 1rem white;
     border-left: solid 1rem #2D9BD2;
-    border-right: solid 1rem #2D9BD2; } }
+    border-right: solid 1rem #2D9BD2; }
+  .navbar-top-menu:hover li.active > a:after {
+    border-bottom: solid 0 white;
+    border-left: solid 0 #337ab7;
+    border-right: solid 0 #337ab7; }
+  .navbar-top-menu:hover li.active:hover > a:after {
+    border-bottom: solid 1rem white;
+    border-left: solid 1rem #337ab7;
+    border-right: solid 1rem #337ab7; } }
 
 .navbar-top-menu a {
   color: #F2F2F2; }
@@ -5882,3 +5890,8 @@ button.close {
   .navbar {
     border-top-left-radius: 0;
     border-top-right-radius: 0; } }
+
+@media (max-width: 767px) {
+  .navbar-nav > li > a {
+    line-height: 2rem;
+    height: auto; } }
