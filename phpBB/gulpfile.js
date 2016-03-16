@@ -4,6 +4,7 @@ var del = require('del'),
 	gulp = require('gulp'),
 	sass = require('gulp-sass'),
 	postcss = require('gulp-postcss'),
+	cleanCss = require('gulp-clean-css'),
 	path = require('path');
 
 var admConfig = {
@@ -29,6 +30,7 @@ gulp.task('adm_compile_sass', ['clean_adm', 'copy_adm_js', 'copy_adm_fonts'], fu
 			]
 		}).on("error", sass.logError))
 		.pipe(postcss(processors))
+		.pipe(cleanCss({compatibility: 'ie8'}))
 		.pipe(gulp.dest(admConfig.cssPath));
 });
 

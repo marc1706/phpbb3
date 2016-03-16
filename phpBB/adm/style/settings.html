@@ -7,9 +7,8 @@
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<link rel="icon" href="../../favicon.ico">
 
-	<title>Dashboard Template for Bootstrap</title>
+	<title>Settings</title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="assets/css/style.css" rel="stylesheet">
@@ -52,10 +51,10 @@
 		</div>
 		<div class="navbar-top-menu" role="navigation">
 			<ul class="nav nav-pills nav-justified top-menu-list">
-				<li class="active">
+				<li>
 					<a href="#"><i class="svg-icons icon-tachometer"></i><span>Dashboard</span></a>
 				</li>
-				<li>
+				<li class="active">
 					<a href="#"><i class="svg-icons icon-cog"></i><span>Settings</span></a>
 				</li>
 				<li>
@@ -84,23 +83,39 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-sm-3 col-md-2 sidebar">
-			<ul class="nav nav-sidebar">
-				<li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-				<li><a href="#">Reports</a></li>
-				<li><a href="#">Analytics</a></li>
-				<li><a href="#">Export</a></li>
+			<ul class="nav nav-sidebar" data-toggle="collapse" data-target="#settings-board">
+				<li class="active"><a href="#">Board configuration <span class="sr-only">(current)</span></a></li>
 			</ul>
-			<ul class="nav nav-sidebar">
-				<li><a href="">Nav item</a></li>
-				<li><a href="">Nav item again</a></li>
-				<li><a href="">One more nav</a></li>
-				<li><a href="">Another nav item</a></li>
-				<li><a href="">More navigation</a></li>
+			<ul class="nav sub-menu collapse" id="settings-board">
+				<li><a href="#">Attachment settings</a></li>
+				<li><a href="#">Board settings</a></li>
+				<li><a href="#">Board features</a></li>
+				<li><a href="#">Avatar settings</a></li>
+				<li><a href="#">Private message settings</a></li>
+				<li><a href="#">Post settings</a></li>
+				<li><a href="#">Signature settings</a></li>
+				<li><a href="#">Feed settings</a></li>
+				<li><a href="#">User registration settings</a></li>
+				<li><a href="#">Spambot countermeasuers</a></li>
+				<li><a href="#">Contact page settings</a></li>
 			</ul>
-			<ul class="nav nav-sidebar">
-				<li><a href="">Nav item again</a></li>
-				<li><a href="">One more nav</a></li>
-				<li><a href="">Another nav item</a></li>
+			<ul class="nav nav-sidebar" data-toggle="collapse" data-target="#settings-client">
+				<li><a href="#">Client communication <span class="sr-only">(current)</span></a></li>
+			</ul>
+			<ul class="nav sub-menu collapse" id="settings-client">
+				<li><a href="#">Authentication</a></li>
+				<li><a href="#">Email</a></li>
+				<li><a href="#">Jabber</a></li>
+			</ul>
+			<ul class="nav nav-sidebar" data-toggle="collapse" data-target="#settings-server">
+				<li><a href="#">Server configuration <span class="sr-only">(current)</span></a></li>
+			</ul>
+			<ul class="nav sub-menu collapse" id="settings-server">
+				<li><a href="#">Cookies</a></li>
+				<li><a href="#">Server</a></li>
+				<li><a href="#">Security</a></li>
+				<li><a href="#">Server load</a></li>
+				<li><a href="#">Search</a></li>
 			</ul>
 		</div>
 		<div class="col-sm-9 col-md-10 main">

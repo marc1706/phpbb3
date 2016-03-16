@@ -119,8 +119,20 @@ $navbar-menu-height: 12rem;
 	padding-right: 0.5rem;
 }
 
+.navbar-top-menu .svg-icons {
+	fill: $color-black-5;
+}
+
+.top-menu-list  span {
+	display: block;
+}
+
+.top-menu-list i.svg-icons {
+	margin-top: 1rem;
+}
+
 @media (min-width: 768px) {
-	.navbar-top-menu .icon::after {
+	.navbar-top-menu .icon:after {
 		content:"\000A";
 		white-space: pre;
 	}
