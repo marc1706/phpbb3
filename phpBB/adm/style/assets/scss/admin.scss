@@ -172,3 +172,30 @@ $navbar-menu-height: 12rem;
 		height: auto;
 	}
 }
+
+/* Sidebar
+---------------------------------------------- */
+
+.wrap {
+	min-height: 100%;
+	position: relative;
+}
+
+.sidebar {
+	background-color: $color-black-5;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	margin-top: -20px;
+	padding: 20px 0 0 0;
+	border-right: 1px solid $color-black-13;
+}
+
+.sidebar ul li {
+	border-bottom: 1px solid $color-black-10;
+}
+
+.sidebar .sub-menu {
+	background-color: $color-white;
+}
