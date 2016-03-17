@@ -188,6 +188,11 @@ $sprite: map-get($icons, sprite) !default;
 		background-position: mq-px2rem(map-get($iconMap, x)) mq-px2rem(map-get($iconMap, y));
 	}
 
+	// Outputs background position in rem
+	@if $type == bg_small {
+		background-position: mq-px2rem(map-get($iconMap, x) / 3) mq-px2rem(map-get($iconMap, y) / 3);
+	}
+
 	// Add ie fallback
 	@include ie-sprite($icon, $type);
 

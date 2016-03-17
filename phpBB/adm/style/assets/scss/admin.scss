@@ -175,10 +175,57 @@ $navbar-menu-height: 12rem;
 
 /* SVG icons large
 ---------------------------------------------- */
+.svg-icons {
+	@extend %sprite;
+	@include sprite(adn, size);
+}
+
+.svg-icons-small {
+	@extend .svg-icons;
+	background-size: (4.8rem / 3 + 1rem) mq-px2rem(map-get($sprite, height) / 3);
+	width: mq-px2rem(16px) + 1rem;
+	height: mq-px2rem(16px);
+}
+
 @each $svg-icon, $svg-settings in $icons {
 	@if #{$svg-icon} != sprite and #{$svg-icon} != '500px' {
 		.icon-#{$svg-icon} {
-			@include sprite(#{$svg-icon});
+			@include sprite(#{$svg-icon}, bg);
 		}
 	}
+}
+
+@each $svg-icon, $svg-settings in $icons {
+	@if #{$svg-icon} != sprite and #{$svg-icon} != '500px' {
+		.svg-icons-small.icon-#{$svg-icon} {
+			@include sprite(#{$svg-icon}, bg_small);
+		}
+	}
+}
+
+/* Sidebar
+---------------------------------------------- */
+
+.wrap {
+	min-height: 100%;
+	position: relative;
+}
+
+.sidebar {
+	background-color: $color-black-5;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	margin-top: -20px;
+	padding: 20px 0 0 0;
+	border-right: 1px solid $color-black-13;
+}
+
+.sidebar ul li {
+	border-bottom: 1px solid $color-black-10;
+}
+
+.sidebar .sub-menu {
+	background-color: $color-white;
 }
