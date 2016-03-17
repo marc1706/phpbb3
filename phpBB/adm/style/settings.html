@@ -79,206 +79,163 @@
 	</div>
 </nav>
 
-<div class="wrap">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-3 col-md-2 sidebar">
-				<ul class="nav nav-sidebar">
-					<li class="active">
-						<a data-toggle="collapse" data-target="#settings-board"><i class="svg-icons-small icon-tachometer"></i>Board configuration <span class="sr-only">(current)</span></a>
-						<ul class="nav sub-menu collapse" id="settings-board">
-							<li><a href="#">Attachment settings</a></li>
-							<li><a href="#">Board settings</a></li>
-							<li><a href="#">Board features</a></li>
-							<li><a href="#">Avatar settings</a></li>
-							<li><a href="#">Private message settings</a></li>
-							<li><a href="#">Post settings</a></li>
-							<li><a href="#">Signature settings</a></li>
-							<li><a href="#">Feed settings</a></li>
-							<li><a href="#">User registration settings</a></li>
-							<li><a href="#">Spambot countermeasuers</a></li>
-							<li><a href="#">Contact page settings</a></li>
-						</ul>
-					</li>
-					<li>
-						<a data-toggle="collapse" data-target="#settings-client">Client communication <span class="sr-only">(current)</span></a>
-						<ul class="nav sub-menu collapse" id="settings-client">
-							<li><a href="#">Authentication</a></li>
-							<li><a href="#">Email</a></li>
-							<li><a href="#">Jabber</a></li>
-						</ul>
-					</li>
-					<li>
-						<a data-toggle="collapse" data-target="#settings-server">Server configuration <span class="sr-only">(current)</span></a>
-						<ul class="nav sub-menu collapse" id="settings-server">
-							<li><a href="#">Cookies</a></li>
-							<li><a href="#">Server</a></li>
-							<li><a href="#">Security</a></li>
-							<li><a href="#">Server load</a></li>
-							<li><a href="#">Search</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div>
-			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<h1 class="page-header">Dashboard</h1>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-3 col-md-2 sidebar">
+			<ul class="nav nav-sidebar">
+				<li class="active">
+					<a data-toggle="collapse" data-target="#settings-board"><i class="icon fa-list"></i>Board configuration <span class="sr-only">(current)</span></a>
+					<ul class="nav sub-menu collapse in" id="settings-board">
+						<li><a href="#">Attachment settings</a></li>
+						<li><a href="#">Board settings</a></li>
+						<li><a href="#">Board features</a></li>
+						<li><a href="#">Avatar settings</a></li>
+						<li><a href="#">Private message settings</a></li>
+						<li><a href="#">Post settings</a></li>
+						<li><a href="#">Signature settings</a></li>
+						<li><a href="#">Feed settings</a></li>
+						<li><a href="#">User registration settings</a></li>
+						<li><a href="#">Spambot countermeasuers</a></li>
+						<li><a href="#">Contact page settings</a></li>
+					</ul>
+				</li>
+				<li>
+					<a class="collapsed" data-toggle="collapse" data-target="#settings-client"><i class="icon fa-user"></i>Client communication</a>
+					<ul class="nav sub-menu collapse" id="settings-client">
+						<li><a href="#">Authentication</a></li>
+						<li><a href="#">Email</a></li>
+						<li><a href="#">Jabber</a></li>
+					</ul>
+				</li>
+				<li>
+					<a class="collapsed" data-toggle="collapse" data-target="#settings-server"><i class="icon fa-server"></i>Server configuration</a>
+					<ul class="nav sub-menu collapse" id="settings-server">
+						<li><a href="#">Cookies</a></li>
+						<li><a href="#">Server</a></li>
+						<li><a href="#">Security</a></li>
+						<li><a href="#">Server load</a></li>
+						<li><a href="#">Search</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<form class="form-horizontal" role="form">
+				<h3 class="page-header">Attachment settings</h3>
+				<p>Here you can configure the main settings for attachments and the associated special categories.</p>
 
-				<div class="row placeholders">
-					<div class="col-xs-6 col-sm-3 placeholder">
-						<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-							 width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-						<h4>Label</h4>
-						<span class="text-muted">Something else</span>
-					</div>
-					<div class="col-xs-6 col-sm-3 placeholder">
-						<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-							 width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-						<h4>Label</h4>
-						<span class="text-muted">Something else</span>
-					</div>
-					<div class="col-xs-6 col-sm-3 placeholder">
-						<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-							 width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-						<h4>Label</h4>
-						<span class="text-muted">Something else</span>
-					</div>
-					<div class="col-xs-6 col-sm-3 placeholder">
-						<img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
-							 width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
-						<h4>Label</h4>
-						<span class="text-muted">Something else</span>
+				<div class="panel panel-primary">
+					<div class="panel-heading">Attachment settings</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<label class="control-label col-sm-3">Allow attachments:</label>
+							<div class="col-sm-6 col-sm-offset-3">
+								<label class="radio-inline"><input type="radio" id="allow_attachments" name="config[allow_attachments]" value="1"> Yes</label>
+								<label class="radio-inline"><input type="radio" name="config[allow_attachments]" value="0" checked="checked"> No</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-3">Allow attachments in private messages:</label>
+							<div class="col-sm-6 col-sm-offset-3">
+								<label class="radio-inline"><input type="radio" id="allow_attachments_pm" name="config[allow_attachments]" value="1"> Yes</label>
+								<label class="radio-inline"><input type="radio" name="config[allow_attachments]" value="0" checked="checked"> No</label>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-3">Attachment display order:</label>
+							<div class="col-sm-6 col-sm-offset-3">
+								<div class="radio">
+									<label class="radio-inline"><input type="radio" id="attach_display_order" name="config[allow_attachments]" value="1"> Descending</label>
+									<label class="radio-inline"><input type="radio" name="config[allow_attachments]" value="0" checked="checked"> Ascending</label>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-
-				<h2 class="sub-header">Section title</h2>
-				<div class="table-responsive">
-					<table class="table table-striped">
-						<thead>
-						<tr>
-							<th>#</th>
-							<th>Header</th>
-							<th>Header</th>
-							<th>Header</th>
-							<th>Header</th>
-						</tr>
-						</thead>
-						<tbody>
-						<tr>
-							<td>1,001</td>
-							<td>Lorem</td>
-							<td>ipsum</td>
-							<td>dolor</td>
-							<td>sit</td>
-						</tr>
-						<tr>
-							<td>1,002</td>
-							<td>amet</td>
-							<td>consectetur</td>
-							<td>adipiscing</td>
-							<td>elit</td>
-						</tr>
-						<tr>
-							<td>1,003</td>
-							<td>Integer</td>
-							<td>nec</td>
-							<td>odio</td>
-							<td>Praesent</td>
-						</tr>
-						<tr>
-							<td>1,003</td>
-							<td>libero</td>
-							<td>Sed</td>
-							<td>cursus</td>
-							<td>ante</td>
-						</tr>
-						<tr>
-							<td>1,004</td>
-							<td>dapibus</td>
-							<td>diam</td>
-							<td>Sed</td>
-							<td>nisi</td>
-						</tr>
-						<tr>
-							<td>1,005</td>
-							<td>Nulla</td>
-							<td>quis</td>
-							<td>sem</td>
-							<td>at</td>
-						</tr>
-						<tr>
-							<td>1,006</td>
-							<td>nibh</td>
-							<td>elementum</td>
-							<td>imperdiet</td>
-							<td>Duis</td>
-						</tr>
-						<tr>
-							<td>1,007</td>
-							<td>sagittis</td>
-							<td>ipsum</td>
-							<td>Praesent</td>
-							<td>mauris</td>
-						</tr>
-						<tr>
-							<td>1,008</td>
-							<td>Fusce</td>
-							<td>nec</td>
-							<td>tellus</td>
-							<td>sed</td>
-						</tr>
-						<tr>
-							<td>1,009</td>
-							<td>augue</td>
-							<td>semper</td>
-							<td>porta</td>
-							<td>Mauris</td>
-						</tr>
-						<tr>
-							<td>1,010</td>
-							<td>massa</td>
-							<td>Vestibulum</td>
-							<td>lacinia</td>
-							<td>arcu</td>
-						</tr>
-						<tr>
-							<td>1,011</td>
-							<td>eget</td>
-							<td>nulla</td>
-							<td>Class</td>
-							<td>aptent</td>
-						</tr>
-						<tr>
-							<td>1,012</td>
-							<td>taciti</td>
-							<td>sociosqu</td>
-							<td>ad</td>
-							<td>litora</td>
-						</tr>
-						<tr>
-							<td>1,013</td>
-							<td>torquent</td>
-							<td>per</td>
-							<td>conubia</td>
-							<td>nostra</td>
-						</tr>
-						<tr>
-							<td>1,014</td>
-							<td>per</td>
-							<td>inceptos</td>
-							<td>himenaeos</td>
-							<td>Curabitur</td>
-						</tr>
-						<tr>
-							<td>1,015</td>
-							<td>sodales</td>
-							<td>ligula</td>
-							<td>in</td>
-							<td>libero</td>
-						</tr>
-						</tbody>
-					</table>
+				<div class="panel panel-primary">
+					<div class="panel-heading">Upload settings</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<label for="upload_path" class="control-label col-sm-3">Upload directory:</label>
+							<div class="col-sm-6 col-sm-offset-3">
+								<input id="upload_path" class="form-control" type="text" size="25" maxlength="100" name="config[upload_path]" value="files" data-cip-id="upload_path">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="attach_quota" class="control-label col-sm-3">Total attachment quota:</label>
+							<div class="col-sm-6 col-sm-offset-3">
+								<div class="input-group">
+									<input type="text" id="attach_quota" class="form-control" value="50">
+									<span class="input-group-addon">MiB</span>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="max_filesize" class="control-label col-sm-3">Maximum file size:</label>
+							<div class="col-sm-6 col-sm-offset-3">
+								<div class="input-group">
+									<input type="text" id="max_filesize" class="form-control" value="5">
+									<span class="input-group-addon">MiB</span>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="max_filesize_messaging" class="control-label col-sm-3">Maximum file size messaging:</label>
+							<div class="col-sm-6 col-sm-offset-3">
+								<div class="input-group">
+									<input type="text" id="max_filesize_messaging" class="form-control" value="2">
+									<span class="input-group-addon">MiB</span>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
+				<div class="panel panel-primary">
+					<div class="panel-heading">Attachment security settings</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<label class="control-label col-sm-3">Enable secure downloads:</label>
+							<div class="col-sm-6 col-sm-offset-3">
+								<div class="radio">
+									<label class="radio-inline"><input type="radio" id="enable_secure_downloads" name="config[allow_attachments]" value="1"> Yes</label>
+									<label class="radio-inline"><input type="radio" name="config[allow_attachments]" value="0" checked="checked"> No</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-3">Allow / Deny List:</label>
+							<div class="col-sm-6 col-sm-offset-3">
+								<div class="radio">
+									<label class="radio-inline"><input type="radio" id="whitelist_blacklist" name="config[allow_attachments]" value="1"> Allow</label>
+									<label class="radio-inline"><input type="radio" name="config[allow_attachments]" value="0" checked="checked"> Deny</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-3">Allow empty referrer:</label>
+							<div class="col-sm-6 col-sm-offset-3">
+								<div class="radio">
+									<label class="radio-inline"><input type="radio" id="emtpy_referrer" name="config[allow_attachments]" value="1"> Yes</label>
+									<label class="radio-inline"><input type="radio" name="config[allow_attachments]" value="0" checked="checked"> No</label>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-3">Check attachment files:</label>
+							<div class="col-sm-6 col-sm-offset-3">
+								<div class="radio">
+									<label class="radio-inline"><input type="radio" id="check_attachments" name="config[allow_attachments]" value="1"> Yes</label>
+									<label class="radio-inline"><input type="radio" name="config[allow_attachments]" value="0" checked="checked"> No</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-actions well">
+					<input class="btn btn-primary" type="submit" name="submit" value="Submit" />
+					<input class="btn btn-default" type="reset" name="reset" value="Reset" />
+				</div>
+			</form>
 		</div>
 	</div>
 </div>

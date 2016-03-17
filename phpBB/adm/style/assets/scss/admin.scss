@@ -14,6 +14,7 @@ $logo-small-height: 4.8rem;
 $logo-small-image-ratio: 2.7;
 $logo-small-responsive-factor: 0.7;
 $logo-small-responsive-height: $logo-small-height * $logo-small-responsive-factor;
+$navbar-brand-height: 7rem;
 
 .phpbb-logo-small {
 	background: url('../../assets/images/logo_small_silver.svg') no-repeat;
@@ -28,7 +29,7 @@ $logo-small-responsive-height: $logo-small-height * $logo-small-responsive-facto
 
 .navbar-nav > li > a {
 	line-height: 40px;
-	height: 70px;
+	height: $navbar-brand-height;
 }
 
 .navbar-form {
@@ -52,7 +53,8 @@ $logo-small-responsive-height: $logo-small-height * $logo-small-responsive-facto
 $navbar-menu-height: 12rem;
 
 .icon {
-	font-family: FontAwesome;
+	font-family: FontAwesome !important;
+	font-style: normal;
 }
 
 .navbar-top-menu {
@@ -161,8 +163,7 @@ $navbar-menu-height: 12rem;
 
 @media (min-width: 768px) {
 	.navbar {
-		border-top-left-radius: 0;
-		border-top-right-radius: 0;
+		border-radius: 0;
 	}
 }
 
@@ -176,20 +177,23 @@ $navbar-menu-height: 12rem;
 /* Sidebar
 ---------------------------------------------- */
 
-.wrap {
-	min-height: 100%;
-	position: relative;
-}
-
 .sidebar {
 	background-color: $color-black-5;
 	position: absolute;
-	top: 0;
+	top: $navbar-brand-height + $navbar-menu-height + 0.2rem;
 	bottom: 0;
 	left: 0;
-	margin-top: -20px;
-	padding: 20px 0 0 0;
+	padding: 2rem 0 0 0;
 	border-right: 1px solid $color-black-13;
+	height: 100%;
+}
+
+.sidebar li i {
+	padding-right: 0.2em;
+}
+
+.icon-end {
+	float: right;
 }
 
 .sidebar ul li {
@@ -198,4 +202,22 @@ $navbar-menu-height: 12rem;
 
 .sidebar .sub-menu {
 	background-color: $color-white;
+}
+
+ul.nav-sidebar > li > a.collapsed:after {
+	font-family: FontAwesome !important;
+	content: '\f107';
+	float: right;
+}
+
+ul.nav-sidebar > li > a:after {
+	font-family: FontAwesome !important;
+	content: '\f106';
+	float: right;
+}
+
+.form-actions {
+	margin: 0;
+	background-color: transparent;
+	text-align: center;
 }
