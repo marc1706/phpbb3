@@ -36,7 +36,7 @@ $navbar-brand-height: 7rem;
 	padding-top: 1rem;
 }
 
-@media (max-width: 767px) {
+@media (max-width: $screen-xs-max) {
 	.phpbb-logo-small {
 		height: $logo-small-responsive-height;
 		width: $logo-small-responsive-height * $logo-small-image-ratio;
@@ -51,6 +51,7 @@ $navbar-brand-height: 7rem;
 ---------------------------------------------- */
 
 $navbar-menu-height: 12rem;
+$screen-menu-single-row: 400px;
 
 .navbar {
 	margin-bottom: 0;
@@ -71,9 +72,16 @@ $navbar-menu-height: 12rem;
 	background-color: $color-secondary-hover;
 }
 
-@media (min-width: 768px) {
+@media (min-width: $screen-sm) {
 	.navbar-top-menu li a {
 		height: $navbar-menu-height;
+	}
+
+	.navbar-top-menu-collapse {
+		display: block !important;
+		height: auto !important;
+		padding-bottom: 0;
+		overflow: visible !important;
 	}
 
 	.navbar-top-menu li > a:after {
@@ -114,6 +122,10 @@ $navbar-menu-height: 12rem;
 	}
 }
 
+.navbar-top-menu > ul.nav-pills > li {
+	margin: 0;
+}
+
 .navbar-top-menu a {
 	color: $color-black-5;
 }
@@ -137,7 +149,7 @@ $navbar-menu-height: 12rem;
 	margin-top: 1rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: $screen-sm) {
 	.navbar-top-menu .icon:after {
 		content:"\000A";
 		white-space: pre;
@@ -152,7 +164,7 @@ $navbar-menu-height: 12rem;
 	}
 }
 
-@media (max-width: 767px) {
+@media (max-width: $screen-xs-max) {
 	.navbar-top-menu {
 		height: auto;
 	}
@@ -164,18 +176,30 @@ $navbar-menu-height: 12rem;
 		padding-right: 0.5rem;
 		vertical-align: -0.5rem;
 	}
+
+	.navbar-top-menu li {
+		float: left;
+		width: 50%;
+	}
+}
+
+@media (max-width: $screen-menu-single-row) {
+	.navbar-top-menu li {
+		float: none;
+		width: 100%;
+	}
 }
 
 /* Responsive settings
 ---------------------------------------------- */
 
-@media (min-width: 768px) {
+@media (min-width: $screen-sm) {
 	.navbar {
 		border-radius: 0;
 	}
 }
 
-@media (max-width: 767px) {
+@media (max-width: $screen-xs-max) {
 	.navbar-nav > li > a {
 		line-height: 2rem;
 		height: auto;
@@ -211,6 +235,15 @@ $navbar-menu-height: 12rem;
 	background-color: $color-white;
 }
 
+@media (min-width: $screen-sm) {
+	.sidebar-collapse.collapse {
+		display: block !important;
+		height: auto !important;
+		padding-bottom: 0;
+		overflow: visible !important;
+	}
+}
+
 ul.nav-sidebar > li > a.collapsed:after {
 	font-family: FontAwesome !important;
 	content: '\f107';
@@ -235,4 +268,33 @@ ul.nav-sidebar > li > a:after {
 
 .content-row {
 	position: relative;
+}
+
+.admin-profile-navbar {
+	padding-right: 1rem;
+}
+
+.admin-profile-navbar > img {
+	max-width: 3rem;
+	max-height: 3rem;
+}
+
+.admin-profile > img {
+	max-width: 8rem;
+	max-height: 8rem;
+}
+
+
+.navbar-login
+{
+	min-width: 30rem;
+	padding: 1rem;
+	padding-bottom: 0;
+}
+
+.navbar-login-session
+{
+	padding: 1rem;
+	padding-bottom: 0;
+	padding-top: 0;
 }
