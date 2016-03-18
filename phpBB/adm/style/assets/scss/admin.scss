@@ -52,6 +52,10 @@ $navbar-brand-height: 7rem;
 
 $navbar-menu-height: 12rem;
 
+.navbar {
+	margin-bottom: 0;
+}
+
 .icon {
 	font-family: FontAwesome !important;
 	font-style: normal;
@@ -142,6 +146,10 @@ $navbar-menu-height: 12rem;
 	.navbar-top-menu .icon {
 		padding-right: 0;
 	}
+
+	.container-fluid > .navbar-collapse.navbar-top-menu {
+		margin: 0 -15px;
+	}
 }
 
 @media (max-width: 767px) {
@@ -180,7 +188,6 @@ $navbar-menu-height: 12rem;
 .sidebar {
 	background-color: $color-black-5;
 	position: absolute;
-	top: $navbar-brand-height + $navbar-menu-height + 0.2rem;
 	bottom: 0;
 	left: 0;
 	padding: 2rem 0 0 0;
@@ -220,4 +227,12 @@ ul.nav-sidebar > li > a:after {
 	margin: 0;
 	background-color: transparent;
 	text-align: center;
+}
+
+.form-horizontal {
+	margin-bottom: 2rem;
+}
+
+.content-row {
+	position: relative;
 }
