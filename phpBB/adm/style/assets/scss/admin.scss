@@ -52,14 +52,23 @@ $navbar-brand-height: 7rem;
 
 $navbar-menu-height: 12rem;
 $screen-menu-single-row: 400px;
+$screen-min-size: 320px;
+
+@mixin fontAwesome {
+	font-family: FontAwesome !important;
+	font-style: normal;
+}
+
+html {
+	min-width: $screen-min-size;
+}
 
 .navbar {
 	margin-bottom: 0;
 }
 
 .icon {
-	font-family: FontAwesome !important;
-	font-style: normal;
+	@include fontAwesome;
 }
 
 .navbar-top-menu {
@@ -181,6 +190,10 @@ $screen-menu-single-row: 400px;
 		float: left;
 		width: 50%;
 	}
+
+	.navbar-top-menu.col-sm-offset-1, .navbar-top-menu.col-xs-offset-1 {
+		margin-left: percentage(1/16);
+	}
 }
 
 @media (max-width: $screen-menu-single-row) {
@@ -245,15 +258,16 @@ $screen-menu-single-row: 400px;
 }
 
 ul.nav-sidebar > li > a.collapsed:after {
-	font-family: FontAwesome !important;
+	@include fontAwesome;
 	content: '\f107';
 	float: right;
 }
 
 ul.nav-sidebar > li > a:after {
-	font-family: FontAwesome !important;
+	@include fontAwesome;
 	content: '\f106';
 	float: right;
+	margin-right: -0.5rem;
 }
 
 .form-actions {
@@ -297,4 +311,85 @@ ul.nav-sidebar > li > a:after {
 	padding: 1rem;
 	padding-bottom: 0;
 	padding-top: 0;
+}
+
+@media (max-width: $screen-xs-max) {
+	.navbar-header {
+		float: left;
+	}
+
+	.navbar-right {
+		float: right;
+	}
+
+	.navbar-nav {
+		margin: 0;
+	}
+
+	.navbar-toggle {
+		margin: ($navbar-padding-vertical / 2) 0;
+	}
+
+	.admin-profile-text {
+		display: none;
+	}
+
+	.navbar-right > li.dropdown > ul.profile-dropdown {
+		position: absolute;
+		right: -6rem;
+		left: auto;
+		top: 100%;
+		z-index: 1000;
+		padding: 5px 0;
+		margin: 2px 0 0;
+		list-style: none;
+		text-align: left;
+		background-color: #fff;
+		border: 1px solid rgba(0,0,0,.15);
+		border-radius: 4px;
+		box-shadow: 0 6px 12px rgba(0,0,0,.175);
+		background-clip: padding-box;
+	}
+}
+
+@media (max-width: $screen-xs-max) {
+	.navbar-form {
+		display: none;
+	}
+}
+
+/** Responsive sidebar
+---------------------------------------------- */
+@media (max-width: $screen-xs-max) {
+	.sidebar .collapse {
+		display: block;
+	}
+
+	ul.nav-sidebar > li > ul.sub-menu {
+		display: none;
+	}
+
+	a.sidebar-toggle {
+		white-space: nowrap;
+	}
+	
+	.sidebar-toggle > span {
+		display: none;
+	}
+
+	ul.nav-sidebar.collapse > li > a.collapsed:after {
+		@include fontAwesome;
+		content: '';
+		float: right;
+	}
+
+	ul.nav-sidebar.collapse > li > a:after {
+		@include fontAwesome;
+		content: '';
+		float: right;
+	}
+
+	.nav.nav-sidebar > li > a {
+		padding: 1rem;
+	}
 }
