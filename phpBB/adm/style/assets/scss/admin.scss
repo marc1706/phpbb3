@@ -230,6 +230,7 @@ html {
 	padding: 2rem 0 0 0;
 	border-right: 1px solid $color-black-13;
 	height: 100%;
+	z-index: 5;
 }
 
 .sidebar li i {
@@ -366,6 +367,14 @@ ul.nav-sidebar > li > a:after {
 	}
 
 	ul.nav-sidebar > li > ul.sub-menu {
+		display: none;
+	}
+
+	ul.nav-sidebar > li > ul.sub-menu.collapse {
+		display: block;
+	}
+
+	ul.nav-sidebar > li > ul.sub-menu.collapsed {
 		display: none;
 	}
 
