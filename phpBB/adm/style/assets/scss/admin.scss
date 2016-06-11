@@ -371,11 +371,11 @@ ul.nav-sidebar > li > a:after {
 	}
 
 	ul.nav-sidebar > li > ul.sub-menu.collapse {
-		display: block;
+		display: none;
 	}
 
 	ul.nav-sidebar > li > ul.sub-menu.collapse.in {
-		display: none;
+		display: block;
 	}
 
 	a.sidebar-toggle {

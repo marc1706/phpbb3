@@ -122,12 +122,12 @@
 		<nav class="col-lg-2 col-md-3 col-sm-3 sidebar">
 			<ul class="nav nav-sidebar sidebar-collapse collapse">
 				<li class="active">
-					<a class="sidebar-toggle" data-toggle="collapse" data-target="#settings-board">
+					<a class="sidebar-toggle" data-toggle="collapse" data-target="#settings-board" aria-expanded="true">
 						<i class="icon fa-list"></i>
 						<span>Board configuration</span>
 						<span class="sr-only">(current)</span>
 					</a>
-					<ul class="nav sub-menu collapse in" id="settings-board">
+					<ul class="nav sub-menu collapse" id="settings-board">
 						<li><a href="#">Attachment settings</a></li>
 						<li><a href="#">Board settings</a></li>
 						<li><a href="#">Board features</a></li>
@@ -142,7 +142,7 @@
 					</ul>
 				</li>
 				<li>
-					<a class="collapsed sidebar-toggle" data-toggle="collapse" data-target="#settings-client"><i class="icon fa-user"></i><span>Client communication</span></a>
+					<a class="collapsed sidebar-toggle" data-toggle="collapse" data-target="#settings-client" aria-expanded="false"><i class="icon fa-user"></i><span>Client communication</span></a>
 					<ul class="nav sub-menu collapse" id="settings-client">
 						<li><a href="#">Authentication</a></li>
 						<li><a href="#">Email</a></li>
@@ -150,7 +150,7 @@
 					</ul>
 				</li>
 				<li>
-					<a class="collapsed sidebar-toggle" data-toggle="collapse" data-target="#settings-server"><i class="icon fa-server"></i><span>Server configuration</span></a>
+					<a class="collapsed sidebar-toggle" data-toggle="collapse" data-target="#settings-server" aria-expanded="false"><i class="icon fa-server"></i><span>Server configuration</span></a>
 					<ul class="nav sub-menu collapse" id="settings-server">
 						<li><a href="#">Cookies</a></li>
 						<li><a href="#">Server</a></li>
