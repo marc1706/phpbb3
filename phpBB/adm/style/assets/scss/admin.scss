@@ -374,15 +374,17 @@ ul.nav-sidebar > li > a:after {
 		display: none;
 	}
 
-	ul.nav-sidebar > li > ul.sub-menu.collapse.in {
+	ul.nav-sidebar > li > ul.sub-menu.collapse.in,
+	ul.nav-sidebar > li > ul.sub-menu.collapsing {
 		display: block;
 	}
 
 	a.sidebar-toggle {
 		white-space: nowrap;
+		text-align: center;
 	}
 	
-	.sidebar-toggle > span {
+	.sidebar-toggle.collapsed > span {
 		display: none;
 	}
 
