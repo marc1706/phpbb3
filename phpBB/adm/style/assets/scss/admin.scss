@@ -154,6 +154,14 @@ html {
 	display: block;
 }
 
+.nav.top-menu-list > li > a:focus {
+	background-color: $color-secondary-accent;
+}
+
+.nav.top-menu-list > li > a:focus:hover {
+	background-color: $color-secondary-hover;
+}
+
 .top-menu-list i.svg-icons {
 	margin-top: 1rem;
 }
