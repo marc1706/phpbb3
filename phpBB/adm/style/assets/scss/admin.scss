@@ -54,11 +54,6 @@ $navbar-menu-height: 12rem;
 $screen-menu-single-row: 400px;
 $screen-min-size: 320px;
 
-@mixin fontAwesome {
-	font-family: FontAwesome !important;
-	font-style: normal;
-}
-
 html {
 	min-width: $screen-min-size;
 }
