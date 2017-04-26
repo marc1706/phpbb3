@@ -8,12 +8,12 @@ var del = require('del'),
 	path = require('path');
 
 var admConfig = {
-	cssPath: './adm/style/assets/css',
-	fontsPath: './adm/style/assets/fonts',
-	imagesPath: './adm/style/assets/images',
-	jsPath: './adm/style/assets/js',
-	sassPath: './adm/style/assets/scss',
-	bootstrapDir: './vendor/twbs/bootstrap-sass'
+	cssPath: './phpBB/adm/style/assets/css',
+	fontsPath: './phpBB/adm/style/assets/fonts',
+	imagesPath: './phpBB/adm/style/assets/images',
+	jsPath: './phpBB/adm/style/assets/js',
+	sassPath: './phpBB/adm/style/assets/scss',
+	bootstrapDir: './node_modules/bootstrap/'
 };
 
 gulp.task('adm_compile_sass', ['clean_adm', 'copy_adm_js', 'copy_adm_fonts'], function() {
@@ -26,7 +26,7 @@ gulp.task('adm_compile_sass', ['clean_adm', 'copy_adm_js', 'copy_adm_fonts'], fu
 			style: 'compressed',
 			includePaths: [
 				admConfig.sassPath,
-				admConfig.bootstrapDir + '/assets/stylesheets'
+				admConfig.bootstrapDir + '/scss'
 			]
 		}).on("error", sass.logError))
 		.pipe(postcss(processors))
@@ -35,7 +35,8 @@ gulp.task('adm_compile_sass', ['clean_adm', 'copy_adm_js', 'copy_adm_fonts'], fu
 });
 
 gulp.task('copy_adm_js', function() {
-	return gulp.src(admConfig.bootstrapDir + '/assets/javascripts/bootstrap.min.js')
+	return gulp.src(admConfig.bootstrapDir + '/dist/js/bootstrap.min.js')
+		.pipe(gulp.src(admConfig.bootstrapDir + '/../tether/dist/js/tether.min.js'))
 		.pipe(gulp.dest(admConfig.jsPath));
 });
 

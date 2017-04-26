@@ -10,33 +10,30 @@
 /* Top navbar settings
 ---------------------------------------------- */
 
-$logo-small-height: 4.8rem;
+$logo-small-height: 3rem;
 $logo-small-image-ratio: 2.7;
 $logo-small-responsive-factor: 0.7;
 $logo-small-responsive-height: $logo-small-height * $logo-small-responsive-factor;
 $navbar-brand-height: 7rem;
+$navbar-padding-vertical: 0.5rem;
+
+html {
+	font-size: 12px;
+}
 
 .phpbb-logo-small {
 	background: url('../../assets/images/logo_small_silver.svg') no-repeat;
 	display: inline-block;
 	height: $logo-small-height;
 	width: $logo-small-height * $logo-small-image-ratio;
+	margin: -5px 0 -15px 0;
 }
-
-.navbar-brand {
-	padding: 1.3rem;
-}
-
-.navbar-nav > li > a {
-	line-height: 40px;
-	height: $navbar-brand-height;
-}
-
+/*
 .navbar-form {
 	padding-top: 1rem;
 }
 
-@media (max-width: $screen-xs-max) {
+@include media-breakpoint-down(xs) {
 	.phpbb-logo-small {
 		height: $logo-small-responsive-height;
 		width: $logo-small-responsive-height * $logo-small-image-ratio;
@@ -48,9 +45,9 @@ $navbar-brand-height: 7rem;
 }
 
 /* Top menu
----------------------------------------------- */
+----------------------------------------------
 
-$navbar-menu-height: 12rem;
+$navbar-menu-height: 4rem;
 $screen-menu-single-row: 400px;
 $screen-min-size: 320px;
 
@@ -61,11 +58,11 @@ html {
 .navbar {
 	margin-bottom: 0;
 }
-
+*/
 .icon {
 	@include fontAwesome;
 }
-
+/*
 .navbar-top-menu {
 	margin: 0 -15px;
 	background-color: $color-secondary-accent;
@@ -76,7 +73,7 @@ html {
 	background-color: $color-secondary-hover;
 }
 
-@media (min-width: $screen-sm) {
+@include media-breakpoint-up(sm) {
 	.navbar-top-menu li a {
 		height: $navbar-menu-height;
 	}
@@ -126,6 +123,12 @@ html {
 	}
 }
 
+.nav>li>a {
+	position: relative;
+	display: block;
+	padding: 0.8rem 1rem;
+}
+
 .navbar-top-menu > ul.nav-pills > li {
 	margin: 0;
 }
@@ -135,10 +138,11 @@ html {
 }
 
 .navbar-top-menu .icon {
-	font-size: 4.8rem;
+	font-size: 2rem;
 	font-style: normal;
 	text-align: center;
 	padding-right: 0.5rem;
+	display: inline-block;
 }
 
 .navbar-top-menu .svg-icons {
@@ -146,7 +150,8 @@ html {
 }
 
 .top-menu-list  span {
-	display: block;
+	display: inline-block;
+	padding-left: 0.5rem;
 }
 
 .nav.top-menu-list > li > a:focus {
@@ -161,7 +166,7 @@ html {
 	margin-top: 1rem;
 }
 
-@media (min-width: $screen-sm) {
+@include media-breakpoint-up(sm) {
 	.navbar-top-menu .icon:after {
 		content:"\000A";
 		white-space: pre;
@@ -176,7 +181,7 @@ html {
 	}
 }
 
-@media (max-width: $screen-xs-max) {
+@include media-breakpoint-down(xs) {
 	.navbar-top-menu {
 		height: auto;
 	}
@@ -207,15 +212,15 @@ html {
 }
 
 /* Responsive settings
----------------------------------------------- */
+----------------------------------------------
 
-@media (min-width: $screen-sm) {
+@include media-breakpoint-up(sm) {
 	.navbar {
 		border-radius: 0;
 	}
 }
 
-@media (max-width: $screen-xs-max) {
+@include media-breakpoint-down(xs) {
 	.navbar-nav > li > a {
 		line-height: 2rem;
 		height: auto;
@@ -223,14 +228,14 @@ html {
 }
 
 /* Sidebar
----------------------------------------------- */
+----------------------------------------------
 
 .sidebar {
 	background-color: $color-black-5;
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	padding: 2rem 0 0 0;
+	padding: 6rem 0 0 0;
 	border-right: 1px solid $color-black-13;
 	height: 100%;
 	z-index: 5;
@@ -252,7 +257,7 @@ html {
 	background-color: $color-white;
 }
 
-@media (min-width: $screen-sm) {
+@include media-breakpoint-up(sm) {
 	.sidebar-collapse.collapse {
 		display: block !important;
 		height: auto !important;
@@ -287,14 +292,15 @@ ul.nav-sidebar > li > a:after {
 .content-row {
 	position: relative;
 }
-
+*/
 .admin-profile-navbar {
 	padding-right: 1rem;
 }
 
 .admin-profile-navbar > img {
-	max-width: 3rem;
-	max-height: 3rem;
+	max-width: 2.5rem;
+	max-height: 2.5rem;
+	margin: 0 0 -1rem 0;
 }
 
 .admin-profile > img {
@@ -316,8 +322,9 @@ ul.nav-sidebar > li > a:after {
 	padding-bottom: 0;
 	padding-top: 0;
 }
+/*
 
-@media (max-width: $screen-xs-max) {
+@include media-breakpoint-down(xs) {
 	.navbar-header {
 		float: left;
 	}
@@ -356,15 +363,15 @@ ul.nav-sidebar > li > a:after {
 	}
 }
 
-@media (max-width: $screen-xs-max) {
+@include media-breakpoint-down(xs) {
 	.navbar-form {
 		display: none;
 	}
-}
+}*/
 
 /** Responsive sidebar
----------------------------------------------- */
-@media (max-width: $screen-xs-max) {
+---------------------------------------------- *
+@include media-breakpoint-down(xs) {
 	.sidebar .collapse {
 		display: block;
 	}
@@ -406,4 +413,84 @@ ul.nav-sidebar > li > a:after {
 	.nav.nav-sidebar > li > a {
 		padding: 1rem;
 	}
+}*/
+
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+	padding-top: 50px;
+}
+
+/*
+ * Typography
+ */
+
+h1 {
+	margin-bottom: 20px;
+	padding-bottom: 9px;
+	border-bottom: 1px solid #eee;
+}
+
+/*
+ * Sidebar
+ */
+
+.sidebar {
+	position: absolute;
+	top: -1rem;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+	padding: 20px;
+	overflow-x: hidden;
+	overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+	border-right: 1px solid #eee;
+	height: 100%;
+}
+
+/* Sidebar navigation */
+.sidebar {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.sidebar .nav {
+	margin-bottom: 20px;
+}
+
+.sidebar .nav-item {
+	width: 100%;
+}
+
+.sidebar .nav-item + .nav-item {
+	margin-left: 0;
+}
+
+.sidebar .nav-link {
+	border-radius: 0;
+}
+
+/*
+ * Dashboard
+ */
+
+/* Placeholders */
+.placeholders {
+	padding-bottom: 3rem;
+}
+
+.placeholder img {
+	padding-top: 1.5rem;
+	padding-bottom: 1.5rem;
+}
+
+.user-dropdown {
+	padding: 0;
+}
+
+.user-dropdown .admin-profile-text {
+
 }
