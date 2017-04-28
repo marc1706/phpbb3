@@ -256,7 +256,7 @@ html {
 .sidebar .sub-menu {
 	background-color: $color-white;
 }
-
+*/
 @include media-breakpoint-up(sm) {
 	.sidebar-collapse.collapse {
 		display: block !important;
@@ -271,7 +271,7 @@ ul.nav-sidebar > li > a.collapsed:after {
 	content: '\f107';
 	float: right;
 }
-
+/*
 ul.nav-sidebar > li > a:after {
 	@include fontAwesome;
 	content: '\f106';
@@ -369,7 +369,7 @@ ul.nav-sidebar > li > a:after {
 }*/
 
 /** Responsive sidebar
----------------------------------------------- *
+---------------------------------------------- */
 @include media-breakpoint-down(xs) {
 	.sidebar .collapse {
 		display: block;
@@ -412,7 +412,11 @@ ul.nav-sidebar > li > a:after {
 	.nav.nav-sidebar > li > a {
 		padding: 1rem;
 	}
-}*/
+}
+
+ul.collapse {
+	display: none;
+}
 
 /*
  * Base structure
@@ -497,4 +501,8 @@ h1 {
 
 .navbar-nav .nav-link:hover {
 	border-bottom: #00b3ee 2px solid;
+}
+
+.profile-dropdown {
+	margin-top: 0.6rem;
 }
