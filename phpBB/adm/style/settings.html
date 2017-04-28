@@ -136,21 +136,27 @@
 					</ul>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link collapsed sidebar-toggle" data-toggle="collapse" data-target="#settings-client" aria-expanded="false"><i class="icon fa-user"></i><span>Client communication</span></a>
-					<ul class="nav sub-menu collapse" id="settings-client">
-						<li><a href="#">Authentication</a></li>
-						<li><a href="#">Email</a></li>
-						<li><a href="#">Jabber</a></li>
+					<a class="nav-link collapsed sidebar-toggle" data-toggle="collapse" data-target="#settings-client" aria-expanded="false">
+						<i class="icon fa-user"></i>
+						<span>Client communication</span>
+					</a>
+					<ul class="nav nav-pills flex-column sub-menu collapse" id="settings-client">
+						<li class="nav-item"><a class="nav-link" href="#">Authentication</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Email</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Jabber</a></li>
 					</ul>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link collapsed sidebar-toggle" data-toggle="collapse" data-target="#settings-server" aria-expanded="false"><i class="icon fa-server"></i><span>Server configuration</span></a>
-					<ul class="nav sub-menu collapse" id="settings-server">
-						<li><a href="#">Cookies</a></li>
-						<li><a href="#">Server</a></li>
-						<li><a href="#">Security</a></li>
-						<li><a href="#">Server load</a></li>
-						<li><a href="#">Search</a></li>
+					<a class="nav-link collapsed sidebar-toggle" data-toggle="collapse" data-target="#settings-server" aria-expanded="false">
+						<i class="icon fa-server"></i>
+						<span>Server configuration</span>
+					</a>
+					<ul class="nav nav-pills flex-column sub-menu collapse" id="settings-server">
+						<li class="nav-item"><a class="nav-link" href="#">Cookies</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Server</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Security</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Server load</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Search</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -166,8 +172,8 @@
 						<div class="form-group">
 							<label class="control-label col-sm-3">Allow attachments:</label>
 							<div class="col-sm-6 col-sm-offset-3">
-								<label class="radio-inline"><input type="radio" id="allow_attachments" name="config[allow_attachments]" value="1"> Yes</label>
-								<label class="radio-inline"><input type="radio" name="config[allow_attachments]" value="0" checked="checked"> No</label>
+								<div class="form-check form-check-inline"><label class="form-check-label"><input class="form-check-input" type="radio" id="allow_attachments" name="config[allow_attachments]" value="1"> Yes</label></div>
+								<div class="form-check form-check-inline"><label class="form-check-label"><input class="form-check-input" type="radio" name="config[allow_attachments]" value="0" checked="checked"> No</label></div>
 							</div>
 						</div>
 						<div class="form-group">
@@ -206,14 +212,10 @@
 								</div>
 							</div>
 						</div>
-						<div class="form-group">
+						<div class="input-group">
 							<label for="max_filesize" class="control-label col-sm-3">Maximum file size:</label>
-							<div class="col-sm-6 col-sm-offset-3">
-								<div class="input-group">
-									<input type="text" id="max_filesize" class="form-control" value="5">
-									<span class="input-group-addon">MiB</span>
-								</div>
-							</div>
+							<input class="form-control" type="text" id="max_filesize" value="5">
+							<span class="input-group-addon">MiB</span>
 						</div>
 						<div class="form-group">
 							<label for="max_filesize_messaging" class="control-label col-sm-3">Maximum file size messaging:</label>
