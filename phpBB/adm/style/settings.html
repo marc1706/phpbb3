@@ -161,29 +161,29 @@
 				</li>
 			</ul>
 		</nav>
-		<div class="col-lg-10 col-lg-offset-2 col-md-9 offset-md-3 col-sm-9 offset-sm-3 col-xs-11 offset-xs-1 main">
+		<div class="col-lg-10 offset-lg-2 col-md-9 offset-md-3 col-sm-9 offset-sm-3 col-xs-11 offset-xs-1 main">
 			<form class="form-horizontal" role="form">
 				<h3 class="page-header">Attachment settings</h3>
 				<p>Here you can configure the main settings for attachments and the associated special categories.</p>
 
-				<div class="panel panel-primary">
-					<div class="panel-heading">Attachment settings</div>
-					<div class="panel-body">
-						<div class="form-group">
+				<div class="card card-form">
+					<div class="card-header bg-primary text-white">Attachment settings</div>
+					<div class="card-block">
+						<div class="form-group row">
 							<label class="control-label col-sm-3">Allow attachments:</label>
 							<div class="col-sm-6 col-sm-offset-3">
 								<div class="form-check form-check-inline"><label class="form-check-label"><input class="form-check-input" type="radio" id="allow_attachments" name="config[allow_attachments]" value="1"> Yes</label></div>
 								<div class="form-check form-check-inline"><label class="form-check-label"><input class="form-check-input" type="radio" name="config[allow_attachments]" value="0" checked="checked"> No</label></div>
 							</div>
 						</div>
-						<div class="form-group">
+						<div class="form-group row">
 							<label class="control-label col-sm-3">Allow attachments in private messages:</label>
 							<div class="col-sm-6 col-sm-offset-3">
 								<label class="radio-inline"><input type="radio" id="allow_attachments_pm" name="config[allow_attachments]" value="1"> Yes</label>
 								<label class="radio-inline"><input type="radio" name="config[allow_attachments]" value="0" checked="checked"> No</label>
 							</div>
 						</div>
-						<div class="form-group">
+						<div class="form-group row">
 							<label class="control-label col-sm-3">Attachment display order:</label>
 							<div class="col-sm-6 col-sm-offset-3">
 								<div class="radio">
@@ -194,16 +194,16 @@
 						</div>
 					</div>
 				</div>
-				<div class="panel panel-primary">
-					<div class="panel-heading">Upload settings</div>
-					<div class="panel-body">
-						<div class="form-group">
+				<div class="card card-form">
+					<div class="card-header bg-primary text-white">Upload settings</div>
+					<div class="card-block">
+						<div class="form-group row">
 							<label for="upload_path" class="control-label col-sm-3">Upload directory:</label>
 							<div class="col-sm-6 col-sm-offset-3">
 								<input id="upload_path" class="form-control" type="text" size="25" maxlength="100" name="config[upload_path]" value="files" data-cip-id="upload_path">
 							</div>
 						</div>
-						<div class="form-group">
+						<div class="form-group row">
 							<label for="attach_quota" class="control-label col-sm-3">Total attachment quota:</label>
 							<div class="col-sm-6 col-sm-offset-3">
 								<div class="input-group">
@@ -212,12 +212,14 @@
 								</div>
 							</div>
 						</div>
-						<div class="input-group">
-							<label for="max_filesize" class="control-label col-sm-3">Maximum file size:</label>
-							<input class="form-control" type="text" id="max_filesize" value="5">
-							<span class="input-group-addon">MiB</span>
+						<div class="form-group row">
+							<label for="max_filesize" class="control-label col-sm-3 col-form-label">Maximum file size:</label>
+							<div class="input-group col-sm-6">
+								<input class="form-control" type="text" id="max_filesize" value="5">
+								<span class="input-group-addon">MiB</span>
+							</div>
 						</div>
-						<div class="form-group">
+						<div class="form-group row">
 							<label for="max_filesize_messaging" class="control-label col-sm-3">Maximum file size messaging:</label>
 							<div class="col-sm-6 col-sm-offset-3">
 								<div class="input-group">
@@ -228,9 +230,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="panel panel-primary">
-					<div class="panel-heading">Attachment security settings</div>
-					<div class="panel-body">
+				<div class="card card-form">
+					<div class="card-header bg-primary text-white">Attachment security settings</div>
+					<div class="card-block">
 						<div class="form-group">
 							<label class="control-label col-sm-3">Enable secure downloads:</label>
 							<div class="col-sm-6 col-sm-offset-3">
