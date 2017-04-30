@@ -240,19 +240,28 @@ html {
 	height: 100%;
 	z-index: 5;
 }
-
+*/
 .sidebar li i {
 	padding-right: 0.2em;
 }
 
+.navbar {
+	height: 44px;
+}
+
+.navbar-brand {
+	height: 32px;
+}
+
+/*
 .icon-end {
 	float: right;
 }
-
+*/
 .sidebar ul li {
 	border-bottom: 1px solid $color-black-10;
 }
-
+/*
 .sidebar .sub-menu {
 	background-color: $color-white;
 }
@@ -425,7 +434,11 @@ ul.collapse {
 
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
-	padding-top: 50px;
+	padding-top: 44px;
+}
+
+.main {
+	padding-top: 12px;
 }
 
 /*
@@ -444,7 +457,7 @@ h1 {
 
 .sidebar {
 	position: absolute;
-	top: -1rem;
+	top: 0;
 	bottom: 0;
 	left: 0;
 	z-index: 1000;
@@ -510,4 +523,8 @@ h1 {
 
 .card-form {
 	margin-bottom: 0.75rem;
+}
+
+form.form-horizontal {
+	padding-bottom: 24px;
 }
