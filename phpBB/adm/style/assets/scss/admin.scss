@@ -253,11 +253,10 @@ html {
 	height: 32px;
 }
 
-/*
 .icon-end {
 	float: right;
 }
-*/
+
 .sidebar ul li {
 	border-bottom: 1px solid $color-black-10;
 }
@@ -393,7 +392,7 @@ ul.nav-sidebar > li > a:after {
 		display: none;
 	}
 
-	ul.nav-sidebar > li > ul.sub-menu.collapse.in,
+	ul.nav-sidebar > li > ul.sub-menu.collapse.show,
 	ul.nav-sidebar > li > ul.sub-menu.collapsing {
 		display: block;
 	}
@@ -527,4 +526,23 @@ h1 {
 
 form.form-horizontal {
 	padding-bottom: 24px;
+}
+
+@include media-breakpoint-down(xs) {
+	nav.sidebar {
+		min-width: 36px;
+	}
+
+	nav.sidebar {
+		overflow: auto;
+		width: auto !important;
+	}
+}
+
+body {
+	min-width: 290px;
+}
+
+.nav-sidebar .nav-item {
+	overflow: hidden;
 }
