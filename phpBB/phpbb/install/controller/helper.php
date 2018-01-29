@@ -413,4 +413,94 @@ class helper
 
 		return $nav_array;
 	}
+
+	/**
+	 * Build Confirm box
+	 * @param boolean $check True for checking if confirmed (without any additional parameters) and false for displaying the confirm box
+	 * @param string $title Title/Message used for confirm box.
+	 *		message text is _CONFIRM appended to title.
+	 *		If title cannot be found in user->lang a default one is displayed
+	 *		If title_CONFIRM cannot be found in user->lang the text given is used.
+	 * @param string $hidden Hidden variables
+	 * @param string $html_body Template used for confirm box
+	 * @param string $u_action Custom form action
+	 */
+	public function confirm_box($check, $u_action = '', $title = '', $hidden = '', $html_body = 'confirm_body.html')
+	{
+		if ($this->phpbb_request->is_set_post('cancel'))
+		{
+			return false;
+		}
+
+		$confirm = ($this->language->lang('YES') === $this->phpbb_request->variable('confirm', '', true, \phpbb\request\request_interface::POST));
+
+		if ($check && $confirm)
+		{
+			$confirm_key = $this->phpbb_request->variable('confirm_key', '');
+
+			if (!$confirm_key || !$this->installer_config->get('last_confirm_key', '') || $confirm_key != $this->installer_config->get('last_confirm_key', ''))
+			{
+				return false;
+			}
+
+			// Reset last_confirm_key
+			$this->installer_config->set('last_confirm_key', '');
+
+			return true;
+		}
+		else if ($check)
+		{
+			return false;
+		}
+
+		// generate activation key
+		$confirm_key = gen_rand_string(10);
+
+		$this->page_header(($this->language->is_set($title)) ? $this->language->lang('CONFIRM') : $this->language->lang($title));
+
+		$this->template->set_filenames(array(
+				'body' => $html_body)
+		);
+
+		// If activation key already exist, we better do not re-use the key (something very strange is going on...)
+		if ($this->phpbb_request->variable('confirm_key', ''))
+		{
+			// This should not occur, therefore we cancel the operation to safe the user
+			return false;
+		}
+
+		// re-add sid / transform & to &amp; for user->page (user->page is always using &)
+		$u_action = reapply_sid($this->path_helper->get_valid_page($u_action, $this->installer_config->get('enable_mod_rewrite')));
+		$u_action .= ((strpos($u_action, '?') === false) ? '?' : '&amp;') . 'confirm_key=' . $confirm_key;
+
+		$this->template->assign_vars(array(
+			'MESSAGE_TITLE'		=> ($this->language->is_set($title)) ? $this->language->lang('CONFIRM') : $this->language->lang($title, 1),
+			'MESSAGE_TEXT'		=> ($this->language->is_set($title . '_CONFIRM')) ? $title : $this->language->lang($title . '_CONFIRM'),
+
+			'YES_VALUE'			=> $this->language->lang('YES'),
+			'S_CONFIRM_ACTION'	=> $u_action,
+			'S_HIDDEN_FIELDS'	=> $hidden,
+			'S_AJAX_REQUEST'	=> $this->phpbb_request->is_ajax(),
+		));
+
+		$this->installer_config->set('last_confirm_key', $confirm_key);
+
+		if ($this->phpbb_request->is_ajax())
+		{
+			$json_response = new \phpbb\json_response;
+			$json_response->send(array(
+				'MESSAGE_BODY'		=> $this->template->assign_display('body'),
+				'MESSAGE_TITLE'		=> ($this->language->is_set($title)) ? $this->language->lang('CONFIRM') : $this->language->lang($title),
+				'MESSAGE_TEXT'		=> ($this->language->is_set($title . '_CONFIRM')) ? $title : $this->language->lang($title . '_CONFIRM'),
+
+				'YES_VALUE'			=> $this->language->lang('YES'),
+				'S_CONFIRM_ACTION'	=> str_replace('&amp;', '&', $u_action), //inefficient, rewrite whole function
+				'S_HIDDEN_FIELDS'	=> $hidden
+			));
+		}
+
+		$response = new Response($this->template->assign_display('body'), 200);
+
+		return $response;
+	}
 }
