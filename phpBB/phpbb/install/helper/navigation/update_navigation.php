@@ -44,9 +44,11 @@ class update_navigation implements navigation_interface
 
 		return array(
 			'update' => array(
-				'label'		=> 'UPDATE',
-				'route'		=> 'phpbb_installer_update',
-				'order'		=> 1,
+				'label'			=> 'UPDATE',
+				'route'			=> 'phpbb_installer_update',
+				'label_reset'	=> 'UPDATE_RESET',
+				'route_reset'	=> 'phpbb_installer_update_reset',
+				'order'			=> 1,
 				array(
 					'introduction'	=> array(
 						'label'	=> 'INTRODUCTION_TITLE',

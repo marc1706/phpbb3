@@ -26,6 +26,11 @@ phpbb_installer_update:
     defaults:
         _controller: phpbb.installer.controller.update:handle
 
+phpbb_installer_update_reset:
+    path: /update/reset
+    defaults:
+        _controller: phpbb.installer.controller.update:reset
+
 phpbb_installer_update_file_download:
     path: /download/updated
     defaults:

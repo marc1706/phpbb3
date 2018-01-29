@@ -14,6 +14,7 @@
 namespace phpbb\install\controller;
 
 use phpbb\exception\http_exception;
+use phpbb\install\helper\container_factory;
 use phpbb\install\helper\install_helper;
 use phpbb\install\helper\iohandler\factory;
 use phpbb\install\helper\navigation\navigation_provider;
@@ -68,6 +69,9 @@ class update
 	 */
 	protected $template;
 
+	/** @var \phpbb\user */
+	protected $user;
+
 	/**
 	 * Constructor
 	 *
@@ -80,7 +84,7 @@ class update
 	 * @param request_interface		$request
 	 * @param template				$template
 	 */
-	public function __construct(helper $controller_helper, installer $installer, install_helper $install_helper, factory $iohandler, language $language, navigation_provider $menu_provider, request_interface $request, template $template)
+	public function __construct(container_factory $container, helper $controller_helper, installer $installer, install_helper $install_helper, factory $iohandler, language $language, navigation_provider $menu_provider, request_interface $request, template $template)
 	{
 		$this->controller_helper	= $controller_helper;
 		$this->installer			= $installer;
@@ -90,6 +94,7 @@ class update
 		$this->menu_provider		= $menu_provider;
 		$this->request				= $request;
 		$this->template				= $template;
+		$this->user = $container->get('user');
 	}
 
 	/**
@@ -161,6 +166,38 @@ class update
 			$this->controller_helper->handle_navigation($iohandler);
 
 			return $this->controller_helper->render('installer_update.html', 'UPDATE_INSTALLATION', true);
+		}
+	}
+
+	/**
+	 * Controller entry point
+	 *
+	 * @return Response|StreamedResponse
+	 *
+	 * @throws http_exception When phpBB is not installed
+	 */
+	public function reset()
+	{
+		global $request, $user;
+		$request = $this->request;
+		$user = $this->user;
+		$this->user->session_begin();
+		$this->user->setup(array('common', 'acp/common', 'cli'));
+
+		// @todo: reset install config and redirect to normal update route
+		if ($this->controller_helper->confirm_box(true))
+		{
+			echo 'confirmed';
+		}
+		else
+		{
+			$test = $this->controller_helper->confirm_box(
+				false,
+				$this->controller_helper->route('phpbb_installer_update_reset'),
+				'UPDATE_RESET'
+			);
+			var_dump($test);
+			return $test;
 		}
 	}
 }

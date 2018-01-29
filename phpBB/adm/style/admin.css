@@ -416,6 +416,12 @@ li {
 	color: #115098;
 }
 
+.activetab > a.tab-reset {
+	border-left: 1px solid #ccc;
+	padding-left: 5px;
+	margin-left: 5px;
+}
+
 /* Responsive tabs
 ----------------------------------------*/
 .responsive-tab {

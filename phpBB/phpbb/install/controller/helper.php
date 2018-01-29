@@ -270,6 +270,7 @@ class helper
 			'T_JQUERY_LINK'			=> $this->path_helper->get_web_root_path() . $path . '../assets/javascript/jquery.min.js',
 			'T_TEMPLATE_PATH'		=> $this->path_helper->get_web_root_path() . $path . 'style',
 			'T_ASSETS_PATH'			=> $this->path_helper->get_web_root_path() . $path . '../assets',
+			'T_FONT_AWESOME_LINK'	=> $this->path_helper->get_web_root_path() . $path . '../assets/css/font-awesome.min.css',
 
 			'S_CONTENT_DIRECTION' 	=> $this->language->lang('DIRECTION'),
 			'S_CONTENT_FLOW_BEGIN'	=> ($this->language->lang('DIRECTION') === 'ltr') ? 'left' : 'right',
@@ -301,6 +302,8 @@ class helper
 				'L_TITLE' => $this->language->lang($entry['label']),
 				'S_SELECTED' => ($active_main_menu === $key),
 				'U_TITLE' => $this->route($entry['route']),
+				'L_RESET_TITLE' => isset($entry['label_reset']) ? $this->language->lang($entry['label_reset']) : '',
+				'U_RESET_LINK' => isset($entry['route_reset']) ? $this->route($entry['route_reset']) : '',
 			));
 
 			if (is_array($entry[0]) && $active_main_menu === $key)
