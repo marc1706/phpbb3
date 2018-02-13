@@ -370,6 +370,8 @@ $lang = array_merge($lang, array(
 		You will then be guided through the update process. You will be notified once the update is complete.
 		</p>
 	',
+	'UPDATE_RESET'					=> 'Restart update',
+	'UPDATE_RESET_CONFIRM'			=> 'Are you sure you want to reset the update state and restart the update process?',
 ));
 
 // Updater forms

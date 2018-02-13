@@ -16,6 +16,7 @@ namespace phpbb\install\controller;
 use phpbb\exception\http_exception;
 use phpbb\install\helper\container_factory;
 use phpbb\install\helper\install_helper;
+use phpbb\install\helper\iohandler\exception\iohandler_not_implemented_exception;
 use phpbb\install\helper\iohandler\factory;
 use phpbb\install\helper\navigation\navigation_provider;
 use phpbb\install\installer;
@@ -184,10 +185,42 @@ class update
 		$this->user->session_begin();
 		$this->user->setup(array('common', 'acp/common', 'cli'));
 
+		// Set up input-output handler
+		if ($this->request->is_ajax())
+		{
+			$this->iohandler_factory->set_environment('ajax');
+		}
+		else
+		{
+			$this->iohandler_factory->set_environment('nojs');
+		}
+
 		// @todo: reset install config and redirect to normal update route
 		if ($this->controller_helper->confirm_box(true))
 		{
-			echo 'confirmed';
+			$url = $this->controller_helper->route('phpbb_installer_update');
+
+			try
+			{
+				if ($this->request->is_ajax())
+				{
+					$response = new StreamedResponse();
+					$iohandler = $this->iohandler_factory->get();
+					$url = $this->controller_helper->route('phpbb_convert_intro', array('start_new' => 'new'));
+					$response->setCallback(function() use ($iohandler, $url) {
+						$iohandler->redirect($url);
+					});
+					$response->headers->set('X-Accel-Buffering', 'no');
+
+					return $response;
+				}
+
+				return $this->controller_helper->render('installer_update.html', 'UPDATE_INSTALLATION', true);
+			}
+			catch (iohandler_not_implemented_exception $e)
+			{
+				echo 'oops';
+			}
 		}
 		else
 		{
@@ -196,7 +229,6 @@ class update
 				$this->controller_helper->route('phpbb_installer_update_reset'),
 				'UPDATE_RESET'
 			);
-			var_dump($test);
 			return $test;
 		}
 	}

@@ -437,6 +437,7 @@ class helper
 		if ($check && $confirm)
 		{
 			$confirm_key = $this->phpbb_request->variable('confirm_key', '');
+			$this->installer_config->load_config();
 
 			if (!$confirm_key || !$this->installer_config->get('last_confirm_key', '') || $confirm_key != $this->installer_config->get('last_confirm_key', ''))
 			{
@@ -456,7 +457,7 @@ class helper
 		// generate activation key
 		$confirm_key = gen_rand_string(10);
 
-		$this->page_header(($this->language->is_set($title)) ? $this->language->lang('CONFIRM') : $this->language->lang($title));
+		$this->page_header((!$this->language->is_set($title)) ? $this->language->lang('CONFIRM') : $this->language->lang($title));
 
 		$this->template->set_filenames(array(
 				'body' => $html_body)
@@ -474,8 +475,8 @@ class helper
 		$u_action .= ((strpos($u_action, '?') === false) ? '?' : '&amp;') . 'confirm_key=' . $confirm_key;
 
 		$this->template->assign_vars(array(
-			'MESSAGE_TITLE'		=> ($this->language->is_set($title)) ? $this->language->lang('CONFIRM') : $this->language->lang($title, 1),
-			'MESSAGE_TEXT'		=> ($this->language->is_set($title . '_CONFIRM')) ? $title : $this->language->lang($title . '_CONFIRM'),
+			'MESSAGE_TITLE'		=> (!$this->language->is_set($title)) ? $this->language->lang('CONFIRM') : $this->language->lang($title, 1),
+			'MESSAGE_TEXT'		=> (!$this->language->is_set($title . '_CONFIRM')) ? $title : $this->language->lang($title . '_CONFIRM'),
 
 			'YES_VALUE'			=> $this->language->lang('YES'),
 			'S_CONFIRM_ACTION'	=> $u_action,
@@ -484,14 +485,16 @@ class helper
 		));
 
 		$this->installer_config->set('last_confirm_key', $confirm_key);
+		// Save config to make sure confirm key is saved
+		$this->installer_config->save_config();
 
 		if ($this->phpbb_request->is_ajax())
 		{
 			$json_response = new \phpbb\json_response;
 			$json_response->send(array(
 				'MESSAGE_BODY'		=> $this->template->assign_display('body'),
-				'MESSAGE_TITLE'		=> ($this->language->is_set($title)) ? $this->language->lang('CONFIRM') : $this->language->lang($title),
-				'MESSAGE_TEXT'		=> ($this->language->is_set($title . '_CONFIRM')) ? $title : $this->language->lang($title . '_CONFIRM'),
+				'MESSAGE_TITLE'		=> (!$this->language->is_set($title)) ? $this->language->lang('CONFIRM') : $this->language->lang($title),
+				'MESSAGE_TEXT'		=> (!$this->language->is_set($title . '_CONFIRM')) ? $title : $this->language->lang($title . '_CONFIRM'),
 
 				'YES_VALUE'			=> $this->language->lang('YES'),
 				'S_CONFIRM_ACTION'	=> str_replace('&amp;', '&', $u_action), //inefficient, rewrite whole function
