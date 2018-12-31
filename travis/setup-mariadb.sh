@@ -18,7 +18,7 @@ VERSION='5.5'
 OS_CODENAME=$(lsb_release --codename --short)
 
 # Manually purge MySQL to remove conflicting files (e.g. /etc/mysql/my.cnf)
-sudo apt-get purge -y mysql-common
+#sudo apt-get purge -y mysql* mariadb*
 
 if ! which add-apt-repository > /dev/null
 then
@@ -26,17 +26,18 @@ then
 	sudo apt-get install -y python-software-properties
 fi
 
-sudo apt-get update
+#sudo apt-get update
+#sudo find /var/lib/mysql -name "debian-*.flag" -exec rm {} \;
 
-sudo debconf-set-selections <<< "mariadb-server-$VERSION mysql-server/root_password password rootpasswd"
-sudo debconf-set-selections <<< "mariadb-server-$VERSION mysql-server/root_password_again password rootpasswd"
-sudo apt-get install -y mariadb-server-$VERSION
+#sudo debconf-set-selections <<< "mariadb-server-$VERSION mysql-server/root_password password rootpasswd"
+#sudo debconf-set-selections <<< "mariadb-server-$VERSION mysql-server/root_password_again password rootpasswd"
+#sudo apt-get install -y mariadb-server
 
 # Set root password to empty string.
-echo "
-USE mysql;
-UPDATE user SET Password = PASSWORD('') where User = 'root';
-FLUSH PRIVILEGES;
-" | mysql -u root -prootpasswd
+#echo "
+#USE mysql;
+#UPDATE user SET Password = PASSWORD('') where User = 'root';
+#FLUSH PRIVILEGES;
+#" | mysql -u root -prootpasswd
 
 mysql --version
