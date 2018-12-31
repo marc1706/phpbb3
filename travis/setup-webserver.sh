@@ -53,3 +53,4 @@ cat $DIR/../phpBB/docs/nginx.sample.conf \
 | sudo tee $NGINX_CONF
 
 sudo service nginx start
+sudo nginx -t
