@@ -2,6 +2,8 @@ imports:
     - { resource: ../../../phpBB/config/default/container/services_notification.yml }
 
 services:
+    _defaults: { public: true }
+
     notification_manager:
         synthetic: true
 
@@ -38,9 +40,6 @@ services:
     groupposition.teampage:
         synthetic: true
 
-    groupposition.teampage:
-        synthetic: true
-
     text_formatter.s9e.factory:
         synthetic: true
 
@@ -72,5 +71,6 @@ services:
         class: phpbb\notification\type\test
         shared: false
         parent: notification.type.base
+        public: true
         tags:
             - { name: notification.type }
