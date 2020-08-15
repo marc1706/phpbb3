@@ -45,4 +45,7 @@
  <!-- There MUST NOT be unused use statements. -->
  <rule ref="./phpbb/Sniffs/Namespaces/UnusedUseSniff.php" />
 
+<!-- There MUST be exactly one space before and after colon in return type hints -->
+<rule ref="./phpbb/Sniffs/TypeHints/ReturnTypeHintSniff.php" />
+
 </ruleset>
