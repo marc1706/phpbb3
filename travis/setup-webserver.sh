@@ -12,7 +12,7 @@ set -e
 set -x
 
 sudo apt-get update
-sudo apt-get install -y nginx realpath
+sudo apt-get install -y nginx coreutils
 
 sudo service nginx stop
 
