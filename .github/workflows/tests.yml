@@ -22,19 +22,18 @@ jobs:
                     - mysql:5.6
                     - mysql:5.7
                     - mysql:8.0
-                    - postgres:9.5
-                    - postgres:9.6
-                    - postgres:10
-                    - postgres:11
-                    - postgres:12
-                    - postgres:13
-                    - sqlite3
+#                    - postgres:9.5
+#                    - postgres:9.6
+#                    - postgres:10
+#                    - postgres:11
+#                    - postgres:12
+#                    - postgres:13
+#                    - sqlite3
 
         name: PHP${{ matrix.php }} - ${{ matrix.db }}
 
         services:
             mysql:
-                if: startsWith(${{ matrix.db }}, 'mysql')
                 image: ${{ matrix.db }}
                 env:
                     MYSQL_ALLOW_EMPTY_PASSWORD: yes
@@ -46,18 +45,18 @@ jobs:
                     --health-timeout=5s
                     --health-retries=3
 
-            postgres:
-                if: startsWith(${{ matrix.db }}, 'postgres')
-                image: ${{ matrix.db }}
-                env:
-                    POSTGRES_PASSWORD: postgres
-                ports:
-                    - 5432:5432
-                options: >-
-                    --health-cmd pg_isready
-                    --health-interval 10s
-                    --health-timeout 5s
-                    --health-retries 5
+#            postgres:
+#                if: startsWith(${{ matrix.db }}, 'postgres')
+#                image: ${{ matrix.db }}
+#                env:
+#                    POSTGRES_PASSWORD: postgres
+#                ports:
+#                    - 5432:5432
+#                options: >-
+#                    --health-cmd pg_isready
+#                    --health-interval 10s
+#                    --health-timeout 5s
+#                    --health-retries 5
             redis:
                 image: redis
                 options: >-
