@@ -87,11 +87,11 @@ jobs:
             - name: Setup environment for phpBB
               env:
                   DB: ${{steps.database-type.outputs.db}}
-                  PHP_VERSION: ${{ matrix.php }}
+                  CI_PHP_VERSION: ${{ matrix.php }}
                   NOTESTS: 0
                   MYSQL8: ${{ matrix.db }} == 'mysql:8.0'
               run: |
-                  travis/setup-phpbb.sh $DB PHP_VERSION ${NOTESTS:-0} ${MYSQL8:-0}
+                  travis/setup-phpbb.sh $DB CI_PHP_VERSION ${NOTESTS:-0} ${MYSQL8:-0}
 
             - name: Setup database
               env:
