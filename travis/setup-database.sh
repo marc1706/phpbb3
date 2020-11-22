@@ -31,7 +31,7 @@ then
 	mysql -e 'SET GLOBAL storage_engine=MyISAM;'
 fi
 
-if [ "$DB" == "mysql" -o "$DB" == "mariadb" ]
+if [ "$DB" == "mariadb" ]
 then
 	mysql -e 'create database IF NOT EXISTS phpbb_tests;'
 fi

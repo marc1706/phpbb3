@@ -37,6 +37,7 @@ jobs:
                 image: ${{ matrix.db }}
                 env:
                     MYSQL_ALLOW_EMPTY_PASSWORD: yes
+                    MYSQL_DATABASE: phpbb_tests
                 ports:
                     - 3306:3306
                 options: >-
