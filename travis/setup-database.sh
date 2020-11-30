@@ -22,8 +22,8 @@ fi
 
 if [ "$DB" == "postgres" ]
 then
-	psql -c 'DROP DATABASE IF EXISTS phpbb_tests;' -U postgres
-	psql -c 'create database phpbb_tests;' -U postgres
+	PGPASSWORD=postgres psql -h localhost -c 'DROP DATABASE IF EXISTS phpbb_tests;' -U postgres
+	PGPASSWORD=postgres psql -h localhost -c 'create database phpbb_tests;' -U postgres
 fi
 
 if [ "$TRAVIS_PHP_VERSION" == "5.6" -a "$DB" == "mysql" ]
