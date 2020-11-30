@@ -33,9 +33,7 @@ jobs:
 #                    - php: 7.1
 #                      db: "postgres:9.5"
                     - php: 7.1
-                      db: "postgres:9.6"
-#                    - php: 7.1
-#                      db: "postgres:10"
+                      db: "postgres:10"
 #                    - php: 7.1
 #                      db: "postgres:11"
 #                    - php: 7.1
@@ -74,7 +72,7 @@ jobs:
                     --health-retries=3
 
             postgres:
-                image: ${{ matrix.db != 'postgres:9.5' && matrix.db != 'postgres:9.6' && matrix.db != 'postgres:10' && matrix.db != 'postgres:11' && matrix.db != 'postgres:12' && matrix.db != 'postgres:13' && 'postgres:9.6' || matrix.db }}
+                image: ${{ matrix.db != 'postgres:9.5' && matrix.db != 'postgres:9.6' && matrix.db != 'postgres:10' && matrix.db != 'postgres:11' && matrix.db != 'postgres:12' && matrix.db != 'postgres:13' && 'postgres:10' || matrix.db }}
                 env:
                     POSTGRES_PASSWORD: postgres
                 ports:
