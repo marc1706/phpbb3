@@ -29,24 +29,21 @@ fi
 
 if [ "$DB" == "mssql" ]
 then
-	sudo su
-	curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
-	curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
-	exit
+	sudo su -c "curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -"
+	sudo su -c "curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > /etc/apt/sources.list.d/mssql-release.list"
 	sudo apt-get update
 	sudo ACCEPT_EULA=Y apt-get install msodbcsql17
 	sudo ACCEPT_EULA=Y apt-get install mssql-tools
 	echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
 	echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
 	sudo apt install php$TRAVIS_PHP_VERSION-dev unixodbc-dev
+	sudo pecl config-set php_ini /etc/php/$TRAVIS_PHP_VERSION/fpm/php.ini
 	sudo pecl install sqlsrv
 	sudo pecl install pdo_sqlsrv
-	sudo su
-	printf "; priority=20\nextension=sqlsrv.so\n" > /etc/php/$TRAVIS_PHP_VERSION/mods-available/sqlsrv.ini
-	printf "; priority=30\nextension=pdo_sqlsrv.so\n" > /etc/php/$TRAVIS_PHP_VERSION/mods-available/pdo_sqlsrv.ini
-	exit
+	sudo su -c "printf \"; priority=20\nextension=sqlsrv.so\n\" > /etc/php/$TRAVIS_PHP_VERSION/mods-available/sqlsrv.ini"
+	sudo su -c "printf \"; priority=30\nextension=pdo_sqlsrv.so\n\" > /etc/php/$TRAVIS_PHP_VERSION/mods-available/pdo_sqlsrv.ini"
 	sudo phpenmod -v $TRAVIS_PHP_VERSION sqlsrv pdo_sqlsrv
-	sudo service php-fpm restart
+	sudo service php$TRAVIS_PHP_VERSION-fpm restart
 fi
 
 if [ "$MYISAM" == '1' ]
