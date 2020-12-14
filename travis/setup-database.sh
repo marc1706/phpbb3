@@ -38,8 +38,8 @@ then
 	echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
 	sudo apt install php$TRAVIS_PHP_VERSION-dev unixodbc-dev
 	sudo pecl config-set php_ini /etc/php/$TRAVIS_PHP_VERSION/fpm/php.ini
-	sudo pecl install sqlsrv
-	sudo pecl install pdo_sqlsrv
+	sudo pecl -d php_suffix=7.2 install sqlsrv-5.3.0
+	sudo pecl -d php_suffix=7.2 install pdo_sqlsrv-5.3.0
 	sudo su -c "printf \"; priority=20\nextension=sqlsrv.so\n\" > /etc/php/$TRAVIS_PHP_VERSION/mods-available/sqlsrv.ini"
 	sudo su -c "printf \"; priority=30\nextension=pdo_sqlsrv.so\n\" > /etc/php/$TRAVIS_PHP_VERSION/mods-available/pdo_sqlsrv.ini"
 	sudo phpenmod -v $TRAVIS_PHP_VERSION sqlsrv pdo_sqlsrv
