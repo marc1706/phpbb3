@@ -594,6 +594,8 @@ jobs:
                   $env:PGPASSWORD = 'root'
                   psql -c 'DROP DATABASE IF EXISTS phpbb_tests;' -U postgres
                   psql -c 'create database phpbb_tests;' -U postgres
+                  echo ${env:PGDATA}
+                  powershell -Command "Add-MpPreference -ExclusionPath '${env:PGDATA}'"
             - name: Run unit tests
               run: |
                   phpBB/vendor/bin/phpunit --configuration .github/phpunit-psql-windows-github.xml --verbose --stop-on-error
